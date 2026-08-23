@@ -259,7 +259,7 @@ export default function HomePage() {
               </Reveal>
 
               <Reveal
-                delay={440}
+                delay={3000}
                 className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4"
               >
                 <Action href={href("contact")}>Talk to us about a project</Action>
@@ -270,7 +270,7 @@ export default function HomePage() {
               </Reveal>
 
               <Reveal
-                delay={560}
+                delay={3220}
                 className="mt-10 flex flex-wrap items-center gap-x-7 gap-y-3 border-t border-rule pt-7"
               >
                 <span className="font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-muted">

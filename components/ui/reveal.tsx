@@ -115,7 +115,7 @@ export function RevealScript() {
     setTimeout(function(){
       markQueued=false;
       markInteractive();
-    },900);
+    },4800);
   };
   var sweep=function(){
     queued=false;
