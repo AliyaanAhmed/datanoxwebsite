@@ -165,7 +165,6 @@ export function FigThreeWays({ className = "" }: { className?: string }) {
                 rx="20"
                 fill={`url(#${ID}-card)`}
                 stroke="var(--color-o-200)"
-                filter={`url(#${ID}-soft)`}
               />
               <text
                 x={column.x + 26}
@@ -220,7 +219,6 @@ export function FigThreeWays({ className = "" }: { className?: string }) {
             rx="22"
             fill={`url(#${ID}-slab)`}
             stroke="var(--color-o-300)"
-            filter={`url(#${ID}-lift)`}
           />
           <rect
             x="20"
