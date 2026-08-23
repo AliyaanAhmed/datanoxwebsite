@@ -241,7 +241,8 @@ export function Card({
 }) {
   return (
     <div
-      data-interactive-card={hoverable ? "" : undefined}
+      data-interactive-card=""
+      data-rich-card=""
       className={`rounded-lg bg-surface p-7 shadow-[var(--shadow-soft)] ring-1 ring-rule lg:p-8 ${
         hoverable
           ? "transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-lift)] hover:ring-o-200"

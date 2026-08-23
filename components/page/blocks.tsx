@@ -72,6 +72,7 @@ export function PageHero({
   primaryCta = { label: "Book a demo", key: "contact" as RouteKey },
   secondaryCta,
   meta,
+  titleClassName = "",
 }: {
   eyebrow: string;
   title: ReactNode;
@@ -81,6 +82,7 @@ export function PageHero({
   primaryCta?: { label: string; key: RouteKey };
   secondaryCta?: { label: string; key: RouteKey };
   meta?: { label: string; items: string[] };
+  titleClassName?: string;
 }) {
   return (
     <Band tone="canvas" block="hero" className="overflow-hidden">
@@ -101,7 +103,12 @@ export function PageHero({
             <Reveal>
               <Eyebrow>{eyebrow}</Eyebrow>
             </Reveal>
-            <Reveal as="h1" mask delay={90} className="mt-6 max-w-[12ch] text-d1">
+            <Reveal
+              as="h1"
+              mask
+              delay={90}
+              className={`mt-6 max-w-[12ch] text-d1 ${titleClassName}`}
+            >
               {title}
             </Reveal>
             <Reveal delay={320} className="mt-6">
@@ -296,10 +303,12 @@ export function RelatedPages({
             {items.map((item, index) => (
               <Reveal as="li" key={item.key} delay={index * 80}>
                 <Link
+                  data-interactive-card=""
+                  data-rich-card=""
                   href={href(item.key) as Route}
                   className="group flex h-full flex-col rounded-lg bg-surface p-6 shadow-[var(--shadow-soft)] ring-1 ring-rule transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-lift)] hover:ring-o-200"
                 >
-                  <span className="font-display text-[1.0625rem] font-semibold text-ink">
+                  <span data-card-float="" className="font-display text-[1.0625rem] font-semibold text-ink">
                     {routes[item.key].label}
                   </span>
                   <span className="mt-2 text-[0.875rem] leading-relaxed text-muted">

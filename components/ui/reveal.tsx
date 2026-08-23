@@ -31,6 +31,9 @@ type RevealProps = {
   /** Adds the line mask treatment used on display headlines. */
   mask?: boolean;
   from?: RevealFrom;
+  "data-interactive-card"?: string;
+  "data-rich-card"?: string;
+  "data-proof-card"?: string;
 };
 
 export function Reveal({
@@ -40,9 +43,11 @@ export function Reveal({
   className = "",
   mask = false,
   from = "up",
+  ...rest
 }: RevealProps) {
   return (
     <Tag
+      {...rest}
       data-reveal=""
       data-from={from === "up" ? undefined : from}
       suppressHydrationWarning

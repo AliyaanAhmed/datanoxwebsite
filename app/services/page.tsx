@@ -305,11 +305,13 @@ export default function ServicesPage() {
               {LINES.map((line, index) => (
                 <Reveal key={line.name} delay={index * 60}>
                   <div
-                    className="grid gap-8 border-t border-rule pt-10 lg:grid-cols-[minmax(0,20rem)_minmax(0,1fr)] lg:gap-14"
+                    data-interactive-card=""
+                    data-rich-card=""
+                    className="grid gap-8 rounded-xl border border-rule bg-surface p-6 shadow-[var(--shadow-soft)] lg:grid-cols-[minmax(0,20rem)_minmax(0,1fr)] lg:gap-14 lg:p-8"
                   >
                     <div>
-                      <IconChip name={line.icon} />
-                      <h3 className="mt-5 font-display text-[1.625rem] font-semibold leading-tight text-ink">
+                      <IconChip name={line.icon} data-card-float="" />
+                      <h3 data-card-float="" className="mt-5 font-display text-[1.625rem] font-semibold leading-tight text-ink">
                         {line.name}
                       </h3>
                       <p className="mt-3 text-[0.9375rem] leading-relaxed text-body">

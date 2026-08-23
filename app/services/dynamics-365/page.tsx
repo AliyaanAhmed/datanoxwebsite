@@ -231,11 +231,15 @@ export default function DynamicsPage() {
             <ol className="mt-12 grid gap-5 lg:grid-cols-4">
               {PROJECT_OPS.map((item, index) => (
                 <Reveal as="li" key={item.step} delay={index * 90}>
-                  <div className="flex h-full flex-col rounded-xl bg-surface p-6 shadow-[var(--shadow-soft)] ring-1 ring-rule lg:p-7">
+                  <div
+                    data-interactive-card=""
+                    data-rich-card=""
+                    className="flex h-full flex-col rounded-xl bg-surface p-6 shadow-[var(--shadow-soft)] ring-1 ring-rule lg:p-7"
+                  >
                     <span className="grid h-8 w-8 place-items-center rounded-full bg-gradient-to-br from-o-500 to-o-700 font-mono text-[0.75rem] font-medium text-white">
                       {index + 1}
                     </span>
-                    <h3 className="mt-5 font-display text-[1.125rem] font-semibold leading-snug text-ink">
+                    <h3 data-card-float="" className="mt-5 font-display text-[1.125rem] font-semibold leading-snug text-ink">
                       {item.name}
                     </h3>
                     <p className="mt-2.5 text-[0.9375rem] leading-relaxed text-body">

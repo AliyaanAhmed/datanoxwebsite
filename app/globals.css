@@ -258,11 +258,16 @@
     will-change: transform;
   }
 
+  [data-interactive-card] > :not([aria-hidden="true"]) {
+    position: relative;
+    z-index: 1;
+  }
+
   [data-interactive-card]::before {
     content: "";
     position: absolute;
     inset: 0;
-    z-index: -1;
+    z-index: 0;
     pointer-events: none;
     border-radius: inherit;
     background:
@@ -286,6 +291,85 @@
   [data-interactive-card]:hover::before,
   [data-interactive-card]:focus-within::before {
     opacity: 1;
+  }
+
+  [data-rich-card] {
+    overflow: hidden;
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(255, 246, 236, 0.62)),
+      var(--color-surface);
+  }
+
+  [data-rich-card]::after {
+    content: "";
+    position: absolute;
+    inset: auto 1.15rem 1.15rem 1.15rem;
+    z-index: 0;
+    height: 2px;
+    border-radius: 999px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--color-o-300),
+      var(--color-o-600),
+      transparent
+    );
+    opacity: 0.42;
+    transform: scaleX(0.42);
+    transform-origin: left;
+    transition:
+      opacity 320ms var(--ease-out-quart),
+      transform 520ms var(--ease-out-expo);
+  }
+
+  [data-rich-card]:hover::after,
+  [data-rich-card]:focus-within::after {
+    opacity: 0.9;
+    transform: scaleX(1);
+  }
+
+  [data-rich-card] [data-card-float] {
+    transition:
+      transform 360ms var(--ease-out-quart),
+      color 260ms var(--ease-out-quart),
+      background-color 260ms var(--ease-out-quart);
+  }
+
+  [data-rich-card]:hover [data-card-float],
+  [data-rich-card]:focus-within [data-card-float] {
+    transform: translate3d(0, -3px, 16px);
+  }
+
+  [data-staff-hero] {
+    --pulse-delay: 0ms;
+  }
+
+  [data-staff-pulse] {
+    animation: staff-pulse 2.8s ease-in-out infinite;
+    animation-delay: var(--pulse-delay);
+  }
+
+  [data-staff-flow] {
+    stroke-dasharray: 7 10;
+    animation: staff-flow 9s linear infinite;
+  }
+
+  @keyframes staff-pulse {
+    0%,
+    100% {
+      transform: scale(1);
+      box-shadow: 0 0 0 8px var(--color-o-50);
+    }
+    50% {
+      transform: scale(1.08);
+      box-shadow: 0 0 0 14px rgba(245, 107, 31, 0.09);
+    }
+  }
+
+  @keyframes staff-flow {
+    to {
+      stroke-dashoffset: -68;
+    }
   }
 
   [data-proof-strip] {

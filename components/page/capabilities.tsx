@@ -70,9 +70,13 @@ function GridLayout({ items }: { items: Capability[] }) {
     <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
       {items.map((item, index) => (
         <Reveal as="li" key={item.name} delay={index * 80}>
-          <div className="group flex h-full flex-col rounded-lg bg-surface p-7 shadow-[var(--shadow-soft)] ring-1 ring-rule transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-lift)] hover:ring-o-200 lg:p-8">
-            <IconChip name={item.icon} />
-            <h3 className="mt-5 text-d4">{item.name}</h3>
+          <div
+            data-interactive-card=""
+            data-rich-card=""
+            className="group flex h-full flex-col rounded-lg bg-surface p-7 shadow-[var(--shadow-soft)] ring-1 ring-rule transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-lift)] hover:ring-o-200 lg:p-8"
+          >
+            <IconChip name={item.icon} data-card-float="" />
+            <h3 data-card-float="" className="mt-5 text-d4">{item.name}</h3>
             <p className="mt-3 text-[0.9375rem] leading-relaxed">{item.body}</p>
             {item.detail ? (
               <p className="mt-auto pt-6 font-mono text-[0.6875rem] uppercase tracking-[0.1em] text-o-700">
@@ -100,8 +104,12 @@ function ListLayout({ items }: { items: Capability[] }) {
           delay={index * 60}
           className={index > 0 ? "border-t border-rule" : ""}
         >
-          <div className="group grid gap-4 p-7 transition-colors hover:bg-o-50/50 lg:grid-cols-[auto_minmax(0,15rem)_minmax(0,1fr)_auto] lg:items-start lg:gap-8 lg:p-8">
-            <IconChip name={item.icon} />
+          <div
+            data-interactive-card=""
+            data-rich-card=""
+            className="group grid gap-4 p-7 transition-colors hover:bg-o-50/50 lg:grid-cols-[auto_minmax(0,15rem)_minmax(0,1fr)_auto] lg:items-start lg:gap-8 lg:p-8"
+          >
+            <IconChip name={item.icon} data-card-float="" />
             <h3 className="text-d4 lg:pt-1.5">{item.name}</h3>
             <p className="text-[0.9375rem] leading-relaxed lg:pt-2">
               {item.body}
@@ -127,7 +135,10 @@ function FeatureLayout({ items }: { items: Capability[] }) {
   return (
     <div className="mt-12 grid gap-5 lg:grid-cols-[1.05fr_1.35fr]">
       <Reveal>
-        <div className="relative flex h-full flex-col overflow-hidden rounded-xl bg-gradient-to-br from-o-500 to-o-700 p-8 shadow-[var(--shadow-glow)] lg:p-10">
+        <div
+          data-interactive-card=""
+          className="relative flex h-full flex-col overflow-hidden rounded-xl bg-gradient-to-br from-o-500 to-o-700 p-8 shadow-[var(--shadow-glow)] lg:p-10"
+        >
           <span
             aria-hidden="true"
             className="pointer-events-none absolute right-[-4rem] top-[-4rem] h-56 w-56 rounded-full bg-white/12"
@@ -153,8 +164,12 @@ function FeatureLayout({ items }: { items: Capability[] }) {
       <ul className="grid gap-5 sm:grid-cols-2">
         {rest.map((item, index) => (
           <Reveal as="li" key={item.name} delay={index * 70}>
-            <div className="flex h-full flex-col rounded-lg bg-surface p-6 shadow-[var(--shadow-soft)] ring-1 ring-rule lg:p-7">
-              <IconChip name={item.icon} size="sm" />
+            <div
+              data-interactive-card=""
+              data-rich-card=""
+              className="flex h-full flex-col rounded-lg bg-surface p-6 shadow-[var(--shadow-soft)] ring-1 ring-rule lg:p-7"
+            >
+              <IconChip name={item.icon} size="sm" data-card-float="" />
               <h3 className="mt-4 font-display text-[1.0625rem] font-semibold leading-snug text-ink">
                 {item.name}
               </h3>
@@ -183,8 +198,12 @@ function LedgerLayout({ items }: { items: Capability[] }) {
           delay={index * 60}
           className="border-b border-rule"
         >
-          <div className="group flex gap-5 py-7">
-            <IconChip name={item.icon} size="sm" className="mt-0.5" />
+          <div
+            data-interactive-card=""
+            data-rich-card=""
+            className="group flex gap-5 rounded-lg px-4 py-7 shadow-[var(--shadow-soft)] ring-1 ring-transparent transition-colors hover:ring-o-100"
+          >
+            <IconChip name={item.icon} size="sm" className="mt-0.5" data-card-float="" />
             <div>
               <h3 className="flex flex-wrap items-baseline gap-x-3 gap-y-1 font-display text-[1.125rem] font-semibold text-ink">
                 {item.name}

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { CSSProperties } from "react";
 
 import { Reveal } from "@/components/ui/reveal";
 import {
@@ -188,55 +189,132 @@ const FAQ = [
 ];
 
 function StaffPracticeFigure() {
-  const nodes: { label: string; icon: IconName }[] = [
-    { label: "Resource", icon: "people" },
-    { label: "Architect", icon: "layers" },
-    { label: "Tenant", icon: "shield" },
-    { label: "Cadence", icon: "clock" },
+  const nodes: { label: string; detail: string; icon: IconName }[] = [
+    { label: "Resource", detail: "Inside your team", icon: "people" },
+    { label: "Architect", detail: "Escalation path", icon: "layers" },
+    { label: "Tenant", detail: "Your controls", icon: "shield" },
+    { label: "Cadence", detail: "Your sprint rhythm", icon: "clock" },
   ];
 
   return (
     <div
-      data-fig=""
-      data-reveal=""
+      data-staff-hero=""
+      data-interactive-card=""
+      data-rich-card=""
       suppressHydrationWarning
-      className="relative overflow-hidden rounded-lg bg-surface p-5 shadow-[var(--shadow-soft)] ring-1 ring-o-100 sm:p-8"
+      className="relative min-h-[28rem] overflow-hidden rounded-xl bg-surface p-5 shadow-[var(--shadow-lift)] ring-1 ring-o-100 sm:min-h-[31rem] sm:p-8"
     >
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute right-[-7rem] top-[-7rem] h-64 w-64 rounded-full border border-o-200"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_72%_18%,var(--color-o-100)_0%,transparent_28%),radial-gradient(circle_at_18%_76%,var(--color-o-50)_0%,transparent_34%)]"
       />
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute right-12 top-10 h-2.5 w-2.5 rounded-full bg-o-500 shadow-[0_0_0_10px_var(--color-o-50)]"
+        className="pointer-events-none absolute right-[-8rem] top-[-8rem] h-72 w-72 rounded-full border border-o-200"
       />
 
-      <div className="relative grid grid-cols-2 gap-3 sm:gap-4">
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 520 300"
+        className="pointer-events-none absolute left-0 top-16 hidden h-72 w-full text-o-300 sm:block"
+      >
+        <path
+          data-staff-flow=""
+          d="M78 172 C 150 96, 218 88, 260 142 S 373 210, 448 120"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          opacity="0.65"
+        />
+        <path
+          data-staff-flow=""
+          d="M88 216 C 178 254, 247 223, 291 177 S 384 81, 456 166"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          opacity="0.38"
+        />
+      </svg>
+
+      <div className="relative flex items-start justify-between gap-4">
+        <div>
+          <p className="font-mono text-[0.6875rem] uppercase tracking-[0.12em] text-o-700">
+            Borrowed practice
+          </p>
+          <h2 className="mt-3 max-w-[14rem] font-display text-[1.75rem] font-semibold leading-tight text-ink sm:text-[2rem]">
+            One person in your team. A full practice behind them.
+          </h2>
+        </div>
+        <span
+          data-staff-pulse=""
+          aria-hidden="true"
+          className="mt-1 h-3 w-3 shrink-0 rounded-full bg-o-600"
+        />
+      </div>
+
+      <div className="relative mt-8 grid gap-4 sm:mt-10 sm:grid-cols-[0.9fr_1.1fr] sm:items-center">
+        <div
+          data-card-float=""
+          className="rounded-lg border border-rule bg-white/86 p-5 shadow-[var(--shadow-soft)] backdrop-blur"
+        >
+          <p className="font-mono text-[0.6875rem] uppercase tracking-[0.1em] text-muted">
+            Your delivery team
+          </p>
+          <div className="mt-5 flex -space-x-2">
+            {["D", "B", "Q", "P"].map((person) => (
+              <span
+                key={person}
+                className="grid h-10 w-10 place-items-center rounded-full bg-o-50 font-display text-[0.875rem] font-semibold text-o-800 ring-2 ring-white"
+              >
+                {person}
+              </span>
+            ))}
+          </div>
+          <p className="mt-5 text-[0.875rem] leading-relaxed text-body">
+            Your tools, tenant, calendar and backlog stay the working surface.
+          </p>
+        </div>
+
+        <div
+          data-card-float=""
+          className="relative rounded-xl bg-gradient-to-br from-o-500 to-o-700 p-6 text-white shadow-[var(--shadow-glow)]"
+        >
+          <span
+            aria-hidden="true"
+            className="absolute right-5 top-5 h-2.5 w-2.5 rounded-full bg-white shadow-[0_0_0_10px_rgba(255,255,255,0.14)]"
+          />
+          <IconChip name="people" size="lg" className="bg-white/18 text-white ring-white/25" />
+          <p className="mt-5 font-display text-[1.375rem] font-semibold leading-tight !text-white">
+            Placed resource
+          </p>
+          <p className="mt-2 text-[0.9375rem] leading-relaxed text-white/82">
+            Selected from the Datanox delivery team and measured against your sprint cadence.
+          </p>
+        </div>
+      </div>
+
+      <div className="relative mt-4 grid grid-cols-2 gap-3 sm:mt-5 sm:grid-cols-4">
         {nodes.map((node, index) => (
           <div
             key={node.label}
-            className={`rounded-lg border border-rule bg-gradient-to-br from-white to-o-50 p-4 sm:p-5 ${
-              index === 0 ? "lg:translate-y-7" : ""
-            } ${index === 3 ? "lg:-translate-y-7" : ""}`}
+            data-card-float=""
+            className="rounded-lg border border-o-100 bg-white/88 p-3.5 shadow-[var(--shadow-soft)] backdrop-blur sm:p-4"
           >
             <IconChip name={node.icon} size="sm" />
-            <p className="mt-4 font-display text-[1.0625rem] font-semibold text-ink">
+            <p className="mt-3 font-display text-[0.9375rem] font-semibold leading-tight text-ink">
               {node.label}
             </p>
-            <div className="mt-4 h-1.5 rounded-full bg-o-50">
-              <span
-                className="block h-full rounded-full bg-gradient-to-r from-o-400 to-o-600"
-                style={{ width: `${index === 0 ? 70 : index === 1 ? 86 : index === 2 ? 62 : 78}%` }}
-              />
-            </div>
+            <p className="mt-1 text-[0.75rem] leading-snug text-muted">
+              {node.detail}
+            </p>
+            <span
+              data-staff-pulse=""
+              aria-hidden="true"
+              style={{ "--pulse-delay": `${index * 160}ms` } as CSSProperties}
+              className="mt-3 block h-1.5 w-1.5 rounded-full bg-o-500"
+            />
           </div>
         ))}
-      </div>
-
-      <div className="relative mt-5 rounded-lg border border-o-200 bg-o-50 p-5 sm:mt-8">
-        <p className="font-display text-[1.125rem] font-semibold text-ink">
-          One person placed. One practice behind them.
-        </p>
       </div>
     </div>
   );
@@ -278,16 +356,20 @@ export default function StaffAugmentationPage() {
               <span>You are not hiring</span>
             </span>
             <span>
-              <span>a contractor. You are</span>
+              <span>a contractor.</span>
             </span>
             <span>
-              <span>borrowing a practice.</span>
+              <span>You are borrowing</span>
+            </span>
+            <span>
+              <span>a practice.</span>
             </span>
           </>
         }
         lead="Senior Power Platform and Dynamics 365 people, placed inside your team for six months to three years. The resource sits in your team. The practice behind them stays ours, and comes with them."
         primaryCta={{ label: "Define a role", key: "contact" }}
         secondaryCta={{ label: "See the delivery practice", key: "services" }}
+        titleClassName="!max-w-[15ch] !text-d2 lg:!text-[4.2rem] lg:!leading-[1.08]"
         meta={{
           label: "Placed into",
           items: ["Energy", "Government", "Financial services"],
@@ -315,14 +397,16 @@ export default function StaffAugmentationPage() {
                 <Reveal
                   key={item.title}
                   delay={index * 70}
+                  data-interactive-card=""
+                  data-rich-card=""
                   className="relative overflow-hidden rounded-lg bg-surface p-7 shadow-[var(--shadow-soft)] ring-1 ring-rule lg:p-8"
                 >
                   <span
                     aria-hidden="true"
                     className="pointer-events-none absolute right-[-4rem] top-[-4rem] h-36 w-36 rounded-full border border-o-200/70"
                   />
-                  <IconChip name={item.icon} size="sm" />
-                  <h3 className="mt-5 font-display text-[1.125rem] font-semibold text-ink">
+                  <IconChip name={item.icon} size="sm" data-card-float="" />
+                  <h3 data-card-float="" className="mt-5 font-display text-[1.125rem] font-semibold text-ink">
                     {item.title}
                   </h3>
                   <p className="mt-2.5 text-[0.9375rem] leading-relaxed text-body">
@@ -352,6 +436,8 @@ export default function StaffAugmentationPage() {
 
             <Reveal
               delay={120}
+              data-interactive-card=""
+              data-rich-card=""
               className="relative mt-12 overflow-hidden rounded-xl bg-surface shadow-[var(--shadow-soft)] ring-1 ring-rule"
             >
               <span
@@ -432,7 +518,11 @@ export default function StaffAugmentationPage() {
             <ol className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {TIMELINE.map((step, index) => (
                 <Reveal as="li" key={step.title} delay={index * 70}>
-                  <div className="relative h-full overflow-hidden rounded-lg bg-surface p-6 shadow-[var(--shadow-soft)] ring-1 ring-rule">
+                  <div
+                    data-interactive-card=""
+                    data-rich-card=""
+                    className="relative h-full overflow-hidden rounded-lg bg-surface p-6 shadow-[var(--shadow-soft)] ring-1 ring-rule"
+                  >
                     <span
                       aria-hidden="true"
                       className="absolute right-5 top-5 h-2 w-2 rounded-full bg-o-500 shadow-[0_0_0_8px_var(--color-o-50)]"
@@ -441,7 +531,7 @@ export default function StaffAugmentationPage() {
                     <p className="mt-5 font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-o-700">
                       {step.when}
                     </p>
-                    <h3 className="mt-2 font-display text-[1.125rem] font-semibold text-ink">
+                    <h3 data-card-float="" className="mt-2 font-display text-[1.125rem] font-semibold text-ink">
                       {step.title}
                     </h3>
                     <p className="mt-2 text-[0.9375rem] leading-relaxed text-body">
@@ -495,10 +585,12 @@ export default function StaffAugmentationPage() {
               ].map((item) => (
                 <div
                   key={item.title}
+                  data-interactive-card=""
+                  data-rich-card=""
                   className="rounded-lg bg-surface p-6 shadow-[var(--shadow-soft)] ring-1 ring-rule"
                 >
-                  <IconChip name={item.icon} size="sm" />
-                  <h3 className="mt-4 font-display text-[1.0625rem] font-semibold text-ink">
+                  <IconChip name={item.icon} size="sm" data-card-float="" />
+                  <h3 data-card-float="" className="mt-4 font-display text-[1.0625rem] font-semibold text-ink">
                     {item.title}
                   </h3>
                   <p className="mt-1.5 text-[0.9375rem] leading-relaxed text-body">

@@ -229,8 +229,13 @@ export default function AiPage() {
               <Reveal delay={140}>
                 <dl className="grid gap-x-8 gap-y-6 sm:grid-cols-2">
                   {POSITION.map((item) => (
-                    <div key={item.t}>
-                      <dt className="font-display text-[1.0625rem] font-semibold text-ink">
+                    <div
+                      key={item.t}
+                      data-interactive-card=""
+                      data-rich-card=""
+                      className="rounded-lg bg-surface p-5 shadow-[var(--shadow-soft)] ring-1 ring-rule"
+                    >
+                      <dt data-card-float="" className="font-display text-[1.0625rem] font-semibold text-ink">
                         {item.t}
                       </dt>
                       <dd className="mt-1.5 text-[0.9375rem] leading-relaxed text-body">

@@ -7,7 +7,7 @@
  * approval.
  */
 
-import type { SVGProps } from "react";
+import type { ComponentPropsWithoutRef, SVGProps } from "react";
 
 export type IconName =
   | "budget"
@@ -282,17 +282,19 @@ export function IconChip({
   name,
   className = "",
   size = "md",
+  ...rest
 }: {
   name: IconName;
   className?: string;
   size?: "sm" | "md" | "lg";
-}) {
+} & ComponentPropsWithoutRef<"span">) {
   const box =
     size === "lg" ? "h-14 w-14 p-3.5" : size === "sm" ? "h-9 w-9 p-2" : "h-11 w-11 p-2.5";
   return (
     <span
       aria-hidden="true"
       className={`grid shrink-0 place-items-center rounded-md bg-gradient-to-br from-o-50 to-o-100 text-o-700 ring-1 ring-o-100 ${box} ${className}`}
+      {...rest}
     >
       <Icon name={name} className="h-full w-full" />
     </span>
