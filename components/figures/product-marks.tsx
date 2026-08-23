@@ -76,11 +76,12 @@ export function MarkGovernance() {
           x="172"
           y="104"
           textAnchor="middle"
-          className="fill-[var(--color-muted)] font-mono"
-          fontSize="9"
-          letterSpacing="0.1em"
+          className="fill-[var(--color-muted)] font-sans"
+          fontSize="10"
+          fontWeight="600"
+          letterSpacing="0.02em"
         >
-          MATURITY
+          Maturity
         </text>
       </g>
     </Frame>
@@ -281,11 +282,12 @@ export function MarkInsureOs() {
           x="63"
           y="102"
           textAnchor="middle"
-          className="fill-[var(--color-muted)] font-mono"
-          fontSize="8.5"
-          letterSpacing="0.1em"
+          className="fill-[var(--color-muted)] font-sans"
+          fontSize="9.5"
+          fontWeight="600"
+          letterSpacing="0.02em"
         >
-          PRODUCT
+          Product
         </text>
       </g>
 

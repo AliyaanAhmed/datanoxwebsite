@@ -357,7 +357,7 @@ export function FigOneDataModel({ className = "" }: { className?: string }) {
             fontSize="11"
             letterSpacing="0.14em"
           >
-            DATAVERSE
+            Dataverse
           </text>
           <text
             x="48"

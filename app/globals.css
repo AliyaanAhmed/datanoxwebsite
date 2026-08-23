@@ -414,8 +414,8 @@
     font-weight: 600;
   }
 
-  [data-block="hero"] [data-fig],
-  [data-block="hero"] figure {
+  [data-block="hero"] .hero-media [data-fig],
+  [data-block="hero"] .hero-media figure {
     display: block;
     width: 100%;
     max-width: 56rem;
@@ -423,11 +423,21 @@
     background: transparent;
   }
 
-  [data-block="hero"] svg,
-  [data-fig] svg {
+  [data-block="hero"] .hero-media > [data-fig] {
+    box-shadow: none !important;
+    --tw-ring-shadow: 0 0 #0000 !important;
+  }
+
+  [data-block="hero"] .hero-media [data-fig] > svg,
+  [data-block="hero"] .hero-media figure > svg,
+  [data-fig] > svg {
     display: block;
     width: 100%;
     height: auto;
+  }
+
+  [data-block="hero"] .hero-media [data-fig] > svg > rect:first-of-type {
+    fill: transparent;
   }
 
   .hero-media {

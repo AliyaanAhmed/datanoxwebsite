@@ -23,7 +23,7 @@ const W = 188;
 const COLUMNS = [
   {
     x: 20,
-    eyebrow: "PRODUCTS",
+    eyebrow: "Products",
     title: "License it",
     sub: "Five, each sold on its own",
     /** Five bars, because five is the count and three read as a trinity. */
@@ -31,14 +31,14 @@ const COLUMNS = [
   },
   {
     x: 236,
-    eyebrow: "SERVICES",
+    eyebrow: "Services",
     title: "We build it",
     sub: "Projects we design and build",
     motif: "layers" as const,
   },
   {
     x: 452,
-    eyebrow: "PEOPLE",
+    eyebrow: "People",
     title: "We join you",
     sub: "Our consultants in your team",
     motif: "team" as const,
@@ -238,7 +238,7 @@ export function FigThreeWays({ className = "" }: { className?: string }) {
             fontSize="10"
             letterSpacing="0.16em"
           >
-            ONE ENGINEERING PRACTICE
+            One Engineering Practice
           </text>
           <text
             x="46"

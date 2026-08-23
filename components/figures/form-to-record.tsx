@@ -85,7 +85,7 @@ export function FigFormToRecord({ className = "" }: { className?: string }) {
           data-pop=""
           style={{ "--d": 160 } as React.CSSProperties}
         >
-          A STANDALONE FORM TOOL
+          A Standalone Form Tool
         </text>
 
         <path
@@ -171,7 +171,7 @@ export function FigFormToRecord({ className = "" }: { className?: string }) {
           data-pop=""
           style={{ "--d": 820 } as React.CSSProperties}
         >
-          INTELLI FORM
+          Intelli Form
         </text>
 
         <path
@@ -247,7 +247,7 @@ export function FigFormToRecord({ className = "" }: { className?: string }) {
             fontSize="9.5"
             letterSpacing="0.1em"
           >
-            DATAVERSE
+            Dataverse
           </text>
         </g>
       </svg>

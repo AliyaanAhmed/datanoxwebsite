@@ -111,7 +111,7 @@ export function FigScoringChain({ className = "" }: { className?: string }) {
           data-pop=""
           style={{ "--d": 40 } as React.CSSProperties}
         >
-          POLICY BROKEN DOWN
+          Policy Broken Down
         </text>
 
         {/* The roll up, returning right to left */}
@@ -151,7 +151,7 @@ export function FigScoringChain({ className = "" }: { className?: string }) {
           data-pop=""
           style={{ "--d": 720 } as React.CSSProperties}
         >
-          WEIGHTED ROLL UP
+          Weighted Roll Up
         </text>
 
         {/* The overall score */}
@@ -184,7 +184,7 @@ export function FigScoringChain({ className = "" }: { className?: string }) {
             letterSpacing="0.14em"
             opacity="0.85"
           >
-            OVERALL SCORE
+            Overall Score
           </text>
         </g>
 
@@ -254,7 +254,7 @@ export function FigScoringChain({ className = "" }: { className?: string }) {
           data-pop=""
           style={{ "--d": 1360 } as React.CSSProperties}
         >
-          AUDIT, COMPLIANCE AND APPEAL READY
+          Audit, Compliance and Appeal Ready
         </text>
       </svg>
     </figure>
