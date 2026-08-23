@@ -1,0 +1,79 @@
+import type { ElementType, ReactNode, CSSProperties } from "react";
+
+/**
+ * Scroll reveal, with no client component boundary.
+ *
+ * These render as plain server markup carrying data attributes. A single
+ * IntersectionObserver installed once in the document (see RevealScript)
+ * drives every reveal, every thread draw and every diagram on the site.
+ *
+ * The result is that the whole page except the navigation ships zero
+ * JavaScript, which is the difference between a marketing site that loads and
+ * one that loads 22 script files the way the WordPress build did.
+ */
+
+type RevealProps = {
+  children: ReactNode;
+  as?: ElementType;
+  delay?: number;
+  className?: string;
+  /** Adds the line mask treatment used on display headlines. */
+  mask?: boolean;
+};
+
+export function Reveal({
+  children,
+  as: Tag = "div",
+  delay = 0,
+  className = "",
+  mask = false,
+}: RevealProps) {
+  return (
+    <Tag
+      data-reveal=""
+      suppressHydrationWarning
+      className={`${mask ? "reveal-mask" : ""} ${className}`.trim()}
+      style={{ "--reveal-delay": `${delay}ms` } as CSSProperties}
+    >
+      {children}
+    </Tag>
+  );
+}
+
+/**
+ * One observer for the whole document, installed before paint.
+ *
+ * Elements are revealed when they enter view and then unobserved, so the
+ * cost is a single observer and no scroll listener. If JavaScript never
+ * runs, the noscript rule reveals everything immediately, so the page is
+ * fully readable either way.
+ */
+export function RevealScript() {
+  const source = `
+(function(){
+  var reveal=function(el){el.setAttribute('data-shown','true')};
+  if(!('IntersectionObserver' in window)){
+    document.addEventListener('DOMContentLoaded',function(){
+      document.querySelectorAll('[data-reveal]').forEach(reveal)
+    });
+    return
+  }
+  var io=new IntersectionObserver(function(entries){
+    for(var i=0;i<entries.length;i++){
+      if(!entries[i].isIntersecting)continue;
+      reveal(entries[i].target);
+      io.unobserve(entries[i].target)
+    }
+  },{rootMargin:'0px 0px -10% 0px',threshold:0.1});
+  var observe=function(){
+    document.querySelectorAll('[data-reveal]:not([data-shown])').forEach(function(el){io.observe(el)})
+  };
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',observe)
+  } else { observe() }
+  window.addEventListener('pageshow',observe);
+  new MutationObserver(observe).observe(document.documentElement,{childList:true,subtree:true});
+})();`.trim();
+
+  return <script dangerouslySetInnerHTML={{ __html: source }} />;
+}

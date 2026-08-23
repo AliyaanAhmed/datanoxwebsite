@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+  <style>
+    /* The two dark wedges are ink on a light tab and near white on a dark
+       one. A browser tab strip has no background we control, and the mark
+       taken straight from the wordmark disappears on half of them. */
+    .ink { fill: #1C1A17; }
+    @media (prefers-color-scheme: dark) {
+      .ink { fill: #FFFDFB; }
+    }
+  </style>
+  <g transform="translate(2.4, 2.4) scale(1.092) translate(-102.418, -6.31766)">
+    <path fill="#F56B1F" d="M102.418 23.6351H107.379L111.351 17.8449L108.894 14.3279L102.418 23.6351Z" />
+    <path fill="#F0991E" d="M111.242 11.0013L108.894 14.329L111.351 17.8459L113.866 14.329L111.242 11.0013Z" />
+    <path class="ink" d="M107.942 6.58266H103.265L108.894 14.3275L111.242 10.9999L107.942 6.58266Z" />
+    <path class="ink" d="M113.73 21.3828L115.192 23.6344L120 23.601L116.157 18.13L113.73 21.3828Z" />
+    <path fill="#F56B1F" d="M114.488 6.58266L116.992 10.1726L119.472 6.58266H114.488Z" />
+  </g>
+</svg>

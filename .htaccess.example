@@ -1,0 +1,50 @@
+# Generated from content/redirects.ts. Do not edit by hand.
+
+# Security headers. The live site currently sends none of these.
+<IfModule mod_headers.c>
+  Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+</IfModule>
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  RewriteRule ^governance-performancee/?$ /governance-performance/ [R=301,L]
+  RewriteRule ^company-2/?$ /company/ [R=301,L]
+  RewriteRule ^insurance/?$ /insurance-brokers-management-system/ [R=301,L]
+  RewriteRule ^home/?$ / [R=301,L]
+  RewriteRule ^category/blog/?$ /blog/ [R=301,L]
+  RewriteRule ^highlights/?$ /blog/ [R=301,L]
+  RewriteRule ^rs_elements/blogs-tab/?$ /blog/ [R=301,L]
+  RewriteRule ^rs_elements/all-bogs-tab/?$ /blog/ [R=301,L]
+  RewriteRule ^rs_elements/blogs-tab-highlights-page/?$ /blog/ [R=301,L]
+  RewriteRule ^rs_elements/all-bogs-tab-highlights-page/?$ /blog/ [R=301,L]
+  RewriteRule ^rs_elements/news-tab/?$ /blog/ [R=301,L]
+  RewriteRule ^rs_elements/case-study-blogs/?$ /case-studies/ [R=301,L]
+  RewriteRule ^why-organizations-needs-a-business-rules-repository/?$ /blog/ [R=301,L]
+  RewriteRule ^feed/?$ /blog/ [R=301,L]
+  RewriteRule ^sitemap_index.xml/?$ /sitemap.xml [R=301,L]
+  RewriteRule ^no-code-enterprise-forms-that-actually-scale/?$ /blog/no-code-enterprise-forms-that-actually-scale/ [R=301,L]
+  RewriteRule ^what-maturity-index-tracking-software-should-do/?$ /blog/what-maturity-index-tracking-software-should-do/ [R=301,L]
+  RewriteRule ^the-missing-link-in-ms-dynamics365-case-management/?$ /blog/the-missing-link-in-ms-dynamics365-case-management/ [R=301,L]
+  RewriteRule ^kpi-reporting-software-power-bi/?$ /blog/kpi-reporting-software-power-bi/ [R=301,L]
+  RewriteRule ^enterprise-planning-app-microsoft/?$ /blog/enterprise-planning-app-microsoft/ [R=301,L]
+  RewriteRule ^power-platform-budgeting-software-that-fits/?$ /blog/power-platform-budgeting-software-that-fits/ [R=301,L]
+  RewriteRule ^how-dynamics-365-power-platform-and-ai-fit-together/?$ /blog/how-dynamics-365-power-platform-and-ai-fit-together/ [R=301,L]
+  RewriteRule ^businesses-dont-lack-data-they-lack-decision-structure/?$ /blog/businesses-dont-lack-data-they-lack-decision-structure/ [R=301,L]
+  RewriteRule ^from-human-judgement-to-machine-assisted-decisions-where-ai-actually-fits/?$ /blog/from-human-judgement-to-machine-assisted-decisions-where-ai-actually-fits/ [R=301,L]
+  RewriteRule ^ismail-lahore-event/?$ /blog/ismail-lahore-event/ [R=301,L]
+  RewriteRule ^ismail-a-short-documentary/?$ /blog/ismail-a-short-documentary/ [R=301,L]
+  RewriteRule ^datanox-annual-event-karachi/?$ /blog/datanox-annual-event-karachi/ [R=301,L]
+</IfModule>
