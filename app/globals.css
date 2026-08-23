@@ -379,7 +379,9 @@
   }
 
   .home-hero-title > span > span {
-    clip-path: inset(0 100% 0 0);
+    opacity: 0;
+    transform: translate3d(0, 0.7em, 0) scale(0.985);
+    filter: blur(10px);
     transition:
       transform 420ms var(--ease-out-quart),
       text-shadow 420ms var(--ease-out-quart),
@@ -394,52 +396,20 @@
   }
 
   [data-shown="true"].home-hero-title > span > span {
-    animation:
-      home-type-line var(--type-duration, 780ms) steps(var(--type-chars, 16), end)
-        both,
-      home-type-settle 700ms var(--ease-out-quart) both;
-    animation-delay:
-      calc(var(--reveal-delay, 0ms) + var(--type-delay, 0ms)),
-      calc(var(--reveal-delay, 0ms) + var(--type-delay, 0ms) + var(--type-duration, 780ms));
-  }
-
-  .home-hero-title > span > span::after {
-    content: "";
-    display: inline-block;
-    width: 0.045em;
-    height: 0.82em;
-    margin-left: 0.08em;
-    transform: translateY(0.08em);
-    border-radius: 999px;
-    background: var(--color-o-600);
-    opacity: 0;
-  }
-
-  [data-shown="true"].home-hero-title > span > span::after {
-    animation:
-      home-caret 620ms steps(1, end) infinite,
-      home-caret-out 220ms ease forwards;
-    animation-delay:
-      calc(var(--reveal-delay, 0ms) + var(--type-delay, 0ms)),
-      calc(var(--reveal-delay, 0ms) + var(--type-delay, 0ms) + var(--type-duration, 780ms) + 120ms);
+    animation: home-title-rise 900ms var(--ease-out-expo) both;
+    animation-delay: calc(var(--reveal-delay, 0ms) + var(--line-delay, 0ms));
   }
 
   .home-hero-title > span:nth-child(1) > span {
-    --type-chars: 14;
-    --type-duration: 720ms;
-    --type-delay: 120ms;
+    --line-delay: 40ms;
   }
 
   .home-hero-title > span:nth-child(2) > span {
-    --type-chars: 19;
-    --type-duration: 900ms;
-    --type-delay: 780ms;
+    --line-delay: 180ms;
   }
 
   .home-hero-title > span:nth-child(3) > span {
-    --type-chars: 13;
-    --type-duration: 680ms;
-    --type-delay: 1540ms;
+    --line-delay: 320ms;
   }
 
   [data-hero-interactive]:hover .home-hero-title > span > span,
@@ -486,8 +456,8 @@
   }
 
   [data-shown="true"].home-hero-lead > p {
-    animation: home-lead-compose 980ms var(--ease-out-expo) both;
-    animation-delay: 1980ms;
+    animation: home-lead-compose 900ms var(--ease-out-expo) both;
+    animation-delay: 720ms;
   }
 
   .home-hero-lead > p::after {
@@ -508,8 +478,8 @@
   }
 
   [data-shown="true"].home-hero-lead > p::after {
-    animation: home-lead-scan 1250ms var(--ease-out-quart) both;
-    animation-delay: 2200ms;
+    animation: home-lead-scan 1100ms var(--ease-out-quart) both;
+    animation-delay: 980ms;
   }
 
   @keyframes home-title-sheen {
@@ -521,48 +491,28 @@
     }
   }
 
-  @keyframes home-type-line {
+  @keyframes home-title-rise {
     from {
-      clip-path: inset(0 100% 0 0);
+      opacity: 0;
+      filter: blur(10px);
+      transform: translate3d(0, 0.7em, 0) scale(0.985);
+    }
+    62% {
+      opacity: 1;
+      filter: blur(0);
     }
     to {
-      clip-path: inset(0 0 0 0);
-    }
-  }
-
-  @keyframes home-type-settle {
-    from {
-      filter: blur(2px);
-      transform: translate3d(0, 0.08em, 0);
-    }
-    to {
+      opacity: 1;
       filter: none;
       transform: none;
-    }
-  }
-
-  @keyframes home-caret {
-    0%,
-    49% {
-      opacity: 1;
-    }
-    50%,
-    100% {
-      opacity: 0;
-    }
-  }
-
-  @keyframes home-caret-out {
-    to {
-      opacity: 0;
     }
   }
 
   @keyframes home-lead-compose {
     from {
       opacity: 0;
-      filter: blur(9px);
-      transform: translateY(12px);
+      filter: blur(8px);
+      transform: translateY(14px);
     }
     to {
       opacity: 1;
