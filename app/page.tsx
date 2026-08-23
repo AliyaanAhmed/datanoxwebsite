@@ -303,7 +303,7 @@ export default function HomePage() {
       {/* ================================================================ */}
       <Band tone="warm" block="models">
         <Container wide>
-          <div className="py-band">
+          <div className="pb-band pt-[clamp(1.5rem,1rem+2vw,3rem)]">
             <Reveal>
               <SectionHead
                 eyebrow="How to work with us"
