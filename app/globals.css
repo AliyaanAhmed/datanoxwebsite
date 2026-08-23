@@ -300,34 +300,6 @@
       var(--color-surface);
   }
 
-  [data-rich-card]::after {
-    content: "";
-    position: absolute;
-    inset: auto 1.15rem 1.15rem 1.15rem;
-    z-index: 0;
-    height: 2px;
-    border-radius: 999px;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      var(--color-o-300),
-      var(--color-o-600),
-      transparent
-    );
-    opacity: 0.42;
-    transform: scaleX(0.42);
-    transform-origin: left;
-    transition:
-      opacity 320ms var(--ease-out-quart),
-      transform 520ms var(--ease-out-expo);
-  }
-
-  [data-rich-card]:hover::after,
-  [data-rich-card]:focus-within::after {
-    opacity: 0.9;
-    transform: scaleX(1);
-  }
-
   [data-rich-card] [data-card-float] {
     transition:
       transform 360ms var(--ease-out-quart),
