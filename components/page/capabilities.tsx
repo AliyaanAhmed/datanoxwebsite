@@ -190,18 +190,17 @@ function FeatureLayout({ items }: { items: Capability[] }) {
 
 function LedgerLayout({ items }: { items: Capability[] }) {
   return (
-    <ul className="mt-12 grid gap-x-12 gap-y-0 lg:grid-cols-2">
+    <ul className="mt-12 grid gap-5 lg:grid-cols-2">
       {items.map((item, index) => (
         <Reveal
           as="li"
           key={item.name}
           delay={index * 60}
-          className="border-b border-rule"
         >
           <div
             data-interactive-card=""
             data-rich-card=""
-            className="group flex gap-5 rounded-lg px-4 py-7 shadow-[var(--shadow-soft)] ring-1 ring-transparent transition-colors hover:ring-o-100"
+            className="group flex h-full gap-5 rounded-lg bg-surface px-5 py-7 shadow-[var(--shadow-soft)] ring-1 ring-rule transition-colors hover:ring-o-100 lg:px-6"
           >
             <IconChip name={item.icon} size="sm" className="mt-0.5" data-card-float="" />
             <div>
