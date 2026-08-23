@@ -86,6 +86,31 @@ export function RevealScript() {
     },{rootMargin:'0px 0px -10% 0px',threshold:0.1})
   }
   var queued=false;
+  var interactiveSelector='a.group, article, details[data-disclosure], div[class*="shadow-[var(--shadow-soft)]"], div[class*="shadow-[var(--shadow-lift)]"], span[class*="shadow-[var(--shadow-soft)]"]';
+  var markInteractive=function(){
+    if(!(window.matchMedia && window.matchMedia('(pointer: fine)').matches))return;
+    var nodes=document.querySelectorAll(interactiveSelector);
+    for(var i=0;i<nodes.length;i++){
+      var el=nodes[i];
+      if(el.hasAttribute('data-interactive-card'))continue;
+      var cls=typeof el.className==='string'?el.className:'';
+      if(cls.indexOf('rounded-pill')>-1)continue;
+      if(el.closest('header')||el.closest('footer'))continue;
+      if(el.matches('a') && cls.indexOf('h-full')<0 && cls.indexOf('flex-col')<0 && cls.indexOf('items-start')<0)continue;
+      if(el.matches('div') && cls.indexOf('rounded-')<0)continue;
+      if(el.closest('[data-block="hero"] .hero-media'))continue;
+      el.setAttribute('data-interactive-card','');
+    }
+  };
+  var markQueued=false;
+  var scheduleInteractive=function(){
+    if(markQueued)return;
+    markQueued=true;
+    setTimeout(function(){
+      markQueued=false;
+      markInteractive();
+    },900);
+  };
   var sweep=function(){
     queued=false;
     var nodes=document.querySelectorAll(SEL);
@@ -98,14 +123,15 @@ export function RevealScript() {
   };
   var start=function(){
     sweep();
+    scheduleInteractive();
     if('MutationObserver' in window){
-      new MutationObserver(schedule).observe(document.body,{childList:true,subtree:true})
+      new MutationObserver(function(){schedule();scheduleInteractive()}).observe(document.body,{childList:true,subtree:true})
     }
   };
   if(document.readyState==='loading'){
     document.addEventListener('DOMContentLoaded',start)
   } else { start() }
-  window.addEventListener('pageshow',schedule);
+  window.addEventListener('pageshow',function(){schedule();scheduleInteractive()});
   if(window.matchMedia && window.matchMedia('(pointer: fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
     var active=null;
     var reset=function(el){

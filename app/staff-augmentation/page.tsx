@@ -187,6 +187,61 @@ const FAQ = [
   },
 ];
 
+function StaffPracticeFigure() {
+  const nodes: { label: string; icon: IconName }[] = [
+    { label: "Resource", icon: "people" },
+    { label: "Architect", icon: "layers" },
+    { label: "Tenant", icon: "shield" },
+    { label: "Cadence", icon: "clock" },
+  ];
+
+  return (
+    <div
+      data-fig=""
+      data-reveal=""
+      suppressHydrationWarning
+      className="relative overflow-hidden rounded-lg bg-surface p-5 shadow-[var(--shadow-soft)] ring-1 ring-o-100 sm:p-8"
+    >
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute right-[-7rem] top-[-7rem] h-64 w-64 rounded-full border border-o-200"
+      />
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute right-12 top-10 h-2.5 w-2.5 rounded-full bg-o-500 shadow-[0_0_0_10px_var(--color-o-50)]"
+      />
+
+      <div className="relative grid grid-cols-2 gap-3 sm:gap-4">
+        {nodes.map((node, index) => (
+          <div
+            key={node.label}
+            className={`rounded-lg border border-rule bg-gradient-to-br from-white to-o-50 p-4 sm:p-5 ${
+              index === 0 ? "lg:translate-y-7" : ""
+            } ${index === 3 ? "lg:-translate-y-7" : ""}`}
+          >
+            <IconChip name={node.icon} size="sm" />
+            <p className="mt-4 font-display text-[1.0625rem] font-semibold text-ink">
+              {node.label}
+            </p>
+            <div className="mt-4 h-1.5 rounded-full bg-o-50">
+              <span
+                className="block h-full rounded-full bg-gradient-to-r from-o-400 to-o-600"
+                style={{ width: `${index === 0 ? 70 : index === 1 ? 86 : index === 2 ? 62 : 78}%` }}
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="relative mt-5 rounded-lg border border-o-200 bg-o-50 p-5 sm:mt-8">
+        <p className="font-display text-[1.125rem] font-semibold text-ink">
+          One person placed. One practice behind them.
+        </p>
+      </div>
+    </div>
+  );
+}
+
 export default function StaffAugmentationPage() {
   return (
     <>
@@ -237,6 +292,7 @@ export default function StaffAugmentationPage() {
           label: "Placed into",
           items: ["Energy", "Government", "Financial services"],
         }}
+        figure={<StaffPracticeFigure />}
       />
 
       {/* ---------------------------------------------------------------
@@ -254,13 +310,17 @@ export default function StaffAugmentationPage() {
               />
             </Reveal>
 
-            <div className="mt-12 grid overflow-hidden rounded-xl ring-1 ring-rule sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {DIFFERENCE.map((item, index) => (
                 <Reveal
                   key={item.title}
                   delay={index * 70}
-                  className="border-b border-rule bg-surface p-7 last:border-b-0 sm:[&:nth-child(odd)]:border-r lg:border-r lg:[&:nth-child(3n)]:border-r-0 lg:[&:nth-last-child(-n+3)]:border-b-0 lg:p-8"
+                  className="relative overflow-hidden rounded-lg bg-surface p-7 shadow-[var(--shadow-soft)] ring-1 ring-rule lg:p-8"
                 >
+                  <span
+                    aria-hidden="true"
+                    className="pointer-events-none absolute right-[-4rem] top-[-4rem] h-36 w-36 rounded-full border border-o-200/70"
+                  />
                   <IconChip name={item.icon} size="sm" />
                   <h3 className="mt-5 font-display text-[1.125rem] font-semibold text-ink">
                     {item.title}
@@ -290,7 +350,14 @@ export default function StaffAugmentationPage() {
               />
             </Reveal>
 
-            <Reveal delay={120} className="mt-12 overflow-hidden rounded-xl bg-surface shadow-[var(--shadow-soft)] ring-1 ring-rule">
+            <Reveal
+              delay={120}
+              className="relative mt-12 overflow-hidden rounded-xl bg-surface shadow-[var(--shadow-soft)] ring-1 ring-rule"
+            >
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute right-[-8rem] top-[-8rem] h-72 w-72 rounded-full bg-[radial-gradient(circle,var(--color-o-100)_0%,transparent_70%)]"
+              />
               <table className="w-full border-collapse text-left">
                 <caption className="sr-only">
                   Roles Datanox places, with seniority and scope
@@ -318,13 +385,21 @@ export default function StaffAugmentationPage() {
                   </tr>
                 </thead>
                 <tbody>
-                  {ROLES.map((row) => (
-                    <tr key={row.role} className="border-b border-rule last:border-b-0">
+                  {ROLES.map((row, index) => (
+                    <tr
+                      key={row.role}
+                      className="border-b border-rule transition-colors duration-200 last:border-b-0 hover:bg-o-50/55"
+                    >
                       <th
                         scope="row"
                         className="px-6 py-5 align-top font-display text-[0.9375rem] font-semibold text-ink lg:px-8"
                       >
-                        {row.role}
+                        <span className="flex items-start gap-3">
+                          <span className="mt-1 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-o-50 text-[0.6875rem] font-semibold text-o-700 ring-1 ring-o-100">
+                            {index + 1}
+                          </span>
+                          {row.role}
+                        </span>
                       </th>
                       <td className="hidden whitespace-nowrap px-6 py-5 align-top text-[0.875rem] text-o-700 sm:table-cell lg:px-8">
                         {row.level}
@@ -354,19 +429,25 @@ export default function StaffAugmentationPage() {
               />
             </Reveal>
 
-            <ol className="mt-12 grid gap-x-6 gap-y-9 sm:grid-cols-2 lg:grid-cols-3">
+            <ol className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {TIMELINE.map((step, index) => (
                 <Reveal as="li" key={step.title} delay={index * 70}>
-                  <div className="h-1 w-full rounded-pill bg-gradient-to-r from-o-600 to-o-400" />
-                  <p className="mt-5 font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-o-700">
-                    {step.when}
-                  </p>
-                  <h3 className="mt-2 font-display text-[1.125rem] font-semibold text-ink">
-                    {step.title}
-                  </h3>
-                  <p className="mt-2 text-[0.9375rem] leading-relaxed text-body">
-                    {step.body}
-                  </p>
+                  <div className="relative h-full overflow-hidden rounded-lg bg-surface p-6 shadow-[var(--shadow-soft)] ring-1 ring-rule">
+                    <span
+                      aria-hidden="true"
+                      className="absolute right-5 top-5 h-2 w-2 rounded-full bg-o-500 shadow-[0_0_0_8px_var(--color-o-50)]"
+                    />
+                    <div className="h-1 w-full rounded-pill bg-gradient-to-r from-o-600 to-o-400" />
+                    <p className="mt-5 font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-o-700">
+                      {step.when}
+                    </p>
+                    <h3 className="mt-2 font-display text-[1.125rem] font-semibold text-ink">
+                      {step.title}
+                    </h3>
+                    <p className="mt-2 text-[0.9375rem] leading-relaxed text-body">
+                      {step.body}
+                    </p>
+                  </div>
                 </Reveal>
               ))}
             </ol>
@@ -389,27 +470,35 @@ export default function StaffAugmentationPage() {
                 rhythm.
               </h2>
             </Reveal>
-            <Reveal delay={180} className="mt-8 grid gap-x-12 gap-y-7 sm:grid-cols-2">
+            <Reveal delay={180} className="mt-8 grid gap-4 sm:grid-cols-2">
               {[
                 {
                   title: "Cadence",
                   body: "Daily stand up, delivery against your sprint cycle, and a monthly written report covering progress, risks and utilisation.",
+                  icon: "clock" as IconName,
                 },
                 {
                   title: "Escalation",
                   body: "Technical escalation runs into our practice, our architects and our product engineers, rather than stopping at the individual.",
+                  icon: "layers" as IconName,
                 },
                 {
                   title: "Communication",
                   body: "Teams for daily contact, your ticketing system for work items, your repositories for code.",
+                  icon: "remote" as IconName,
                 },
                 {
                   title: "Scaling",
                   body: "Resources are added or reduced as scope changes, drawn from the same delivery team.",
+                  icon: "variety" as IconName,
                 },
               ].map((item) => (
-                <div key={item.title}>
-                  <h3 className="font-display text-[1.0625rem] font-semibold text-ink">
+                <div
+                  key={item.title}
+                  className="rounded-lg bg-surface p-6 shadow-[var(--shadow-soft)] ring-1 ring-rule"
+                >
+                  <IconChip name={item.icon} size="sm" />
+                  <h3 className="mt-4 font-display text-[1.0625rem] font-semibold text-ink">
                     {item.title}
                   </h3>
                   <p className="mt-1.5 text-[0.9375rem] leading-relaxed text-body">
