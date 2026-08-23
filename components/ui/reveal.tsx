@@ -34,6 +34,7 @@ type RevealProps = {
   "data-interactive-card"?: string;
   "data-rich-card"?: string;
   "data-proof-card"?: string;
+  "aria-label"?: string;
 };
 
 export function Reveal({
@@ -147,7 +148,7 @@ export function RevealScript() {
       el.style.removeProperty('--ry');
     };
     document.addEventListener('pointermove',function(event){
-      var target=event.target && event.target.closest ? event.target.closest('[data-interactive-card]') : null;
+      var target=event.target && event.target.closest ? event.target.closest('[data-interactive-card],[data-hero-interactive]') : null;
       if(active && active!==target)reset(active);
       active=target;
       if(!target)return;
@@ -161,7 +162,7 @@ export function RevealScript() {
       target.style.setProperty('--rx',((0.5-y)*7).toFixed(2)+'deg');
     },{passive:true});
     document.addEventListener('pointerleave',function(){reset(active);active=null},{passive:true});
-    document.addEventListener('focusout',function(event){reset(event.target && event.target.closest ? event.target.closest('[data-interactive-card]') : null)},{passive:true});
+    document.addEventListener('focusout',function(event){reset(event.target && event.target.closest ? event.target.closest('[data-interactive-card],[data-hero-interactive]') : null)},{passive:true});
   }
 })();`.trim();
 

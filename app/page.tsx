@@ -220,26 +220,35 @@ export default function HomePage() {
 
         <Container wide className="relative">
           <div className="grid items-start gap-12 pb-16 pt-12 lg:grid-cols-[1.12fr_0.88fr] lg:gap-14 lg:pb-24 lg:pt-16">
-            <div>
+            <div data-hero-interactive="">
               <Reveal>
                 <Eyebrow>Microsoft business applications</Eyebrow>
               </Reveal>
 
-              <Reveal as="h1" mask delay={90} className="mt-7 text-d1">
+              <Reveal
+                as="h1"
+                mask
+                delay={90}
+                className="home-hero-title mt-7 text-d1"
+                aria-label="Excellence in Microsoft business applications."
+              >
                 <span>
-                  <span className="bg-gradient-to-br from-o-500 to-o-700 bg-clip-text text-transparent">
-                    Excellence in
+                  <span
+                    data-home-gradient=""
+                    className="bg-gradient-to-br from-o-500 via-o-600 to-o-700 bg-clip-text text-transparent"
+                  >
+                    Excellence in{" "}
                   </span>
                 </span>
                 <span>
-                  <span>Microsoft business</span>
+                  <span>Microsoft business{" "}</span>
                 </span>
                 <span>
                   <span>applications.</span>
                 </span>
               </Reveal>
 
-              <Reveal delay={340} className="mt-7">
+              <Reveal delay={340} className="home-hero-lead mt-7">
                 <Lead>
                   Datanox designs, builds and runs Dynamics 365 and Power
                   Platform systems for governments, universities, insurers and
