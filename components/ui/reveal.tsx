@@ -106,6 +106,32 @@ export function RevealScript() {
     document.addEventListener('DOMContentLoaded',start)
   } else { start() }
   window.addEventListener('pageshow',schedule);
+  if(window.matchMedia && window.matchMedia('(pointer: fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    var active=null;
+    var reset=function(el){
+      if(!el)return;
+      el.style.removeProperty('--mx');
+      el.style.removeProperty('--my');
+      el.style.removeProperty('--rx');
+      el.style.removeProperty('--ry');
+    };
+    document.addEventListener('pointermove',function(event){
+      var target=event.target && event.target.closest ? event.target.closest('[data-interactive-card]') : null;
+      if(active && active!==target)reset(active);
+      active=target;
+      if(!target)return;
+      var rect=target.getBoundingClientRect();
+      if(!rect.width || !rect.height)return;
+      var x=(event.clientX-rect.left)/rect.width;
+      var y=(event.clientY-rect.top)/rect.height;
+      target.style.setProperty('--mx',(x*100).toFixed(2)+'%');
+      target.style.setProperty('--my',(y*100).toFixed(2)+'%');
+      target.style.setProperty('--ry',((x-0.5)*7).toFixed(2)+'deg');
+      target.style.setProperty('--rx',((0.5-y)*7).toFixed(2)+'deg');
+    },{passive:true});
+    document.addEventListener('pointerleave',function(){reset(active);active=null},{passive:true});
+    document.addEventListener('focusout',function(event){reset(event.target && event.target.closest ? event.target.closest('[data-interactive-card]') : null)},{passive:true});
+  }
 })();`.trim();
 
   return <script dangerouslySetInnerHTML={{ __html: source }} />;

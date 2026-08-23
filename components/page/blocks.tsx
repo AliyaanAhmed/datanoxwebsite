@@ -399,28 +399,48 @@ export function ProofStrip({
             </Reveal>
           ) : null}
 
-          <ul className="grid gap-5 sm:grid-cols-3">
+          <ul data-proof-strip="" className="grid gap-5 sm:grid-cols-3">
             {stats.map((stat, index) => (
               <Reveal as="li" key={stat.figure + stat.label} delay={index * 90}>
-                <div className="relative h-full overflow-hidden rounded-xl bg-gradient-to-br from-white to-o-50 p-8 shadow-[var(--shadow-soft)] ring-1 ring-o-100 lg:p-9">
-                  {/* a warm glow in the corner, so the tile has depth without
-                      needing a border or a second colour */}
+                <div
+                  data-interactive-card=""
+                  data-proof-card=""
+                  className="group relative flex h-full flex-col overflow-hidden rounded-lg bg-surface p-7 shadow-[var(--shadow-soft)] ring-1 ring-o-100 lg:p-8"
+                >
                   <span
                     aria-hidden="true"
-                    className="pointer-events-none absolute right-[-3rem] top-[-3rem] h-36 w-36 rounded-full bg-[radial-gradient(circle,var(--color-o-200)_0%,transparent_70%)] opacity-60"
+                    className="absolute left-7 top-7 grid h-8 w-8 place-items-center rounded-full bg-o-50 text-[0.75rem] font-semibold text-o-700 ring-1 ring-o-100"
+                  >
+                    {index + 1}
+                  </span>
+                  <span
+                    aria-hidden="true"
+                    data-proof-orbit=""
+                    className="pointer-events-none absolute right-[-4.5rem] top-[-4.5rem] h-44 w-44 rounded-full border border-o-200/70"
                   />
-                  <p className="relative bg-gradient-to-br from-o-500 to-o-700 bg-clip-text font-display text-[3rem] leading-none text-transparent">
+                  <span
+                    aria-hidden="true"
+                    className="pointer-events-none absolute right-7 top-7 h-2 w-2 rounded-full bg-o-500 shadow-[0_0_0_8px_var(--color-o-50)]"
+                  />
+                  <p className="relative mt-14 bg-gradient-to-br from-o-500 to-o-700 bg-clip-text font-display text-[4.25rem] leading-none text-transparent lg:text-[4.75rem]">
                     {stat.figure}
                   </p>
-                  <span
+                  <div
                     aria-hidden="true"
-                    className="relative mt-5 block h-0.5 w-10 rounded-full bg-gradient-to-r from-o-500 to-o-600"
-                  />
-                  <p className="relative mt-5 font-display text-[1.0625rem] leading-snug text-ink">
+                    className="relative mt-6 h-1.5 overflow-hidden rounded-full bg-o-50"
+                  >
+                    <span
+                      className="block h-full rounded-full bg-gradient-to-r from-o-400 to-o-600 transition-transform duration-500 group-hover:scale-x-105"
+                      style={{
+                        width: `${index === 0 ? 78 : index === 1 ? 66 : 54}%`,
+                      }}
+                    />
+                  </div>
+                  <p className="relative mt-6 font-display text-[1.125rem] leading-snug text-ink">
                     {stat.label}
                   </p>
                   {stat.detail ? (
-                    <p className="relative mt-2.5 text-[0.9375rem] leading-relaxed text-muted">
+                    <p className="relative mt-3 text-[0.9375rem] leading-relaxed text-muted">
                       {stat.detail}
                     </p>
                   ) : null}

@@ -211,9 +211,11 @@
   [data-reveal] {
     opacity: 0;
     transform: translateY(18px);
+    filter: blur(10px);
     transition:
       opacity 700ms var(--ease-out-expo),
-      transform 700ms var(--ease-out-expo);
+      transform 700ms var(--ease-out-expo),
+      filter 700ms var(--ease-out-expo);
     transition-delay: var(--reveal-delay, 0ms);
   }
 
@@ -228,7 +230,7 @@
   }
 
   [data-reveal][data-from="scale"] {
-    transform: scale(0.965);
+    transform: translateY(10px) scale(0.955);
   }
 
   [data-reveal][data-from="fade"] {
@@ -238,6 +240,103 @@
   [data-reveal][data-shown="true"] {
     opacity: 1;
     transform: none;
+    filter: none;
+  }
+
+  [data-interactive-card] {
+    --mx: 50%;
+    --my: 50%;
+    --rx: 0deg;
+    --ry: 0deg;
+    position: relative;
+    isolation: isolate;
+    transform-style: preserve-3d;
+    transition:
+      transform 260ms var(--ease-out-quart),
+      box-shadow 260ms var(--ease-out-quart),
+      border-color 260ms var(--ease-out-quart);
+    will-change: transform;
+  }
+
+  [data-interactive-card]::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    border-radius: inherit;
+    background:
+      radial-gradient(
+        circle at var(--mx) var(--my),
+        rgba(245, 107, 31, 0.16),
+        transparent 32%
+      ),
+      linear-gradient(135deg, rgba(255, 255, 255, 0.44), transparent 42%);
+    opacity: 0;
+    transition: opacity 260ms var(--ease-out-quart);
+  }
+
+  [data-interactive-card]:hover,
+  [data-interactive-card]:focus-within {
+    transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry))
+      translateY(-4px);
+    box-shadow: var(--shadow-lift);
+  }
+
+  [data-interactive-card]:hover::before,
+  [data-interactive-card]:focus-within::before {
+    opacity: 1;
+  }
+
+  [data-proof-strip] {
+    position: relative;
+  }
+
+  [data-proof-strip]::before {
+    content: "";
+    position: absolute;
+    left: 10%;
+    right: 10%;
+    top: 2.2rem;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      var(--color-o-300),
+      transparent
+    );
+  }
+
+  [data-proof-card] {
+    min-height: 18rem;
+  }
+
+  [data-proof-card]::after {
+    content: "";
+    position: absolute;
+    inset: auto 1.25rem 1.25rem 1.25rem;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      var(--color-rule-strong),
+      transparent
+    );
+    opacity: 0.75;
+  }
+
+  [data-proof-orbit] {
+    animation: proof-orbit 16s linear infinite;
+    transform-origin: center;
+  }
+
+  @keyframes proof-orbit {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
   }
 
   /* --- Disclosure ------------------------------------------------------
@@ -362,6 +461,14 @@
   @media (prefers-reduced-motion: reduce) {
     [data-orb] {
       animation: none;
+    }
+    [data-proof-orbit] {
+      animation: none;
+    }
+    [data-interactive-card],
+    [data-interactive-card]:hover,
+    [data-interactive-card]:focus-within {
+      transform: none !important;
     }
     details[data-disclosure][open] > .disclosure-body {
       animation: none;

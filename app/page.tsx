@@ -329,6 +329,7 @@ export default function HomePage() {
               ].map((model, index) => (
                 <Reveal as="li" key={model.label} delay={index * 90}>
                   <Link
+                    data-interactive-card=""
                     href={href(model.key) as Route}
                     className="group flex h-full flex-col rounded-lg bg-surface p-7 shadow-[var(--shadow-soft)] ring-1 ring-rule transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-lift)] hover:ring-o-200 lg:p-8"
                   >
@@ -493,6 +494,7 @@ export default function HomePage() {
               {industries.map((industry, index) => (
                 <Reveal as="li" key={industry.key} delay={index * 110}>
                   <Link
+                    data-interactive-card=""
                     href={href(industry.key) as Route}
                     className="group flex h-full flex-col rounded-lg bg-surface p-7 shadow-[var(--shadow-soft)] ring-1 ring-rule transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-lift)] hover:ring-o-200 lg:p-8"
                   >
@@ -582,6 +584,7 @@ export default function HomePage() {
 
             <Reveal delay={200} className="mt-6">
               <Link
+                data-interactive-card=""
                 href={href("caseStudies") as Route}
                 className="group flex flex-col gap-6 overflow-hidden rounded-xl bg-gradient-to-br from-o-500 to-o-700 p-8 shadow-[var(--shadow-glow)] transition-transform duration-300 hover:-translate-y-1 sm:flex-row sm:items-center sm:justify-between lg:p-10"
               >
