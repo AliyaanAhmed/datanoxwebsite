@@ -6,7 +6,6 @@ import { Reveal } from "@/components/ui/reveal";
 import {
   Band,
   Container,
-  Eyebrow,
   SectionHead,
   TextLink,
 } from "@/components/ui/primitives";
@@ -15,6 +14,7 @@ import {
   ClosingCta,
   FaqSection,
   PageHero,
+  ProductInsightPanel,
   ProofStrip,
   RelatedPages,
   type Faq,
@@ -383,25 +383,49 @@ export default function IntelliFormPage() {
       <Band tone="canvas" block="ai">
         <Container>
           <div className="py-band">
-            <Reveal>
-              <Eyebrow>What the intelligence is for</Eyebrow>
-            </Reveal>
-            <Reveal delay={90} className="mt-6">
-              <h2 className="measure-tight text-d3">
-                It checks the answer before you have to.
-              </h2>
-            </Reveal>
-            <Reveal delay={180} className="mt-6 measure">
-              <p className="text-[1.0625rem] leading-relaxed text-body">
-                The intelligence here is deliberately narrow. It validates in
-                real time, detects entries that are missing or that look wrong
-                against everything else on the form, and guides a person through
-                the steps so the error is caught while they are still there to
-                fix it. It does not read a submission and decide anything, and it
-                does not approve or reject an application. Fewer rejections,
-                cleaner data, faster processing, and no judgement handed to a
-                machine.
-              </p>
+            <Reveal from="scale">
+              <ProductInsightPanel
+                eyebrow="What the intelligence is for"
+                title="It checks the answer before you have to."
+                icon="check"
+                titleClassName="text-d3"
+                side={
+                  <div
+                    aria-hidden="true"
+                    className="overflow-hidden rounded-lg border border-o-100 bg-gradient-to-br from-white to-o-50 p-5 shadow-[var(--shadow-soft)]"
+                  >
+                    <div className="flex items-center justify-between gap-4 border-b border-o-100 pb-4">
+                      <span className="h-2 w-28 rounded-pill bg-o-500/75" />
+                      <span className="grid h-10 w-10 place-items-center rounded-full bg-o-50 text-o-700 ring-1 ring-o-100">
+                        <span className="h-3 w-3 rounded-full bg-o-500" />
+                      </span>
+                    </div>
+                    <div className="mt-5 space-y-3">
+                      {[0, 1, 2].map((item) => (
+                        <div
+                          key={item}
+                          className="flex items-center gap-3 rounded-md bg-white/88 p-3 ring-1 ring-o-100"
+                        >
+                          <span className="h-6 w-6 rounded-full bg-o-100 ring-1 ring-o-200" />
+                          <span className="h-2 flex-1 rounded-pill bg-o-200/75" />
+                          <span className="h-2 w-10 rounded-pill bg-o-500/80" />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                }
+              >
+                <p>
+                  The intelligence here is deliberately narrow. It validates in
+                  real time, detects entries that are missing or that look wrong
+                  against everything else on the form, and guides a person
+                  through the steps so the error is caught while they are still
+                  there to fix it. It does not read a submission and decide
+                  anything, and it does not approve or reject an application.
+                  Fewer rejections, cleaner data, faster processing, and no
+                  judgement handed to a machine.
+                </p>
+              </ProductInsightPanel>
             </Reveal>
           </div>
         </Container>

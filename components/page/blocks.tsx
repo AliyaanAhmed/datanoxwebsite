@@ -60,6 +60,77 @@ export function Breadcrumbs({
 }
 
 /* ==========================================================================
+   Product insight panel
+   ========================================================================== */
+
+export function ProductInsightPanel({
+  eyebrow,
+  title,
+  children,
+  icon = "layers",
+  side,
+  titleClassName = "text-d2",
+}: {
+  eyebrow: string;
+  title: ReactNode;
+  children: ReactNode;
+  icon?: IconName;
+  side?: ReactNode;
+  titleClassName?: string;
+}) {
+  return (
+    <div
+      data-interactive-card=""
+      data-rich-card=""
+      className="relative overflow-hidden rounded-xl bg-surface p-6 shadow-[var(--shadow-soft)] ring-1 ring-o-100 sm:p-8 lg:p-10"
+    >
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute right-[-5rem] top-[-6rem] h-64 w-64 rounded-full bg-[radial-gradient(circle,var(--color-o-100)_0%,rgba(255,246,236,0.72)_42%,transparent_72%)]"
+      />
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute bottom-0 left-0 h-px w-full bg-gradient-to-r from-transparent via-o-300 to-transparent opacity-80"
+      />
+      <div className="relative grid gap-8 lg:grid-cols-[minmax(0,1.08fr)_minmax(18rem,0.72fr)] lg:items-center">
+        <div>
+          <div className="flex items-center gap-3">
+            <IconChip name={icon} data-card-float="" />
+            <Eyebrow>{eyebrow}</Eyebrow>
+          </div>
+          <h2 className={`mt-7 max-w-[18ch] ${titleClassName}`}>{title}</h2>
+          <div className="mt-6 max-w-[42rem] text-[1.0625rem] leading-relaxed text-body">
+            {children}
+          </div>
+        </div>
+        {side ? (
+          <div className="relative">{side}</div>
+        ) : (
+          <div
+            aria-hidden="true"
+            className="relative hidden min-h-64 overflow-hidden rounded-lg border border-o-100 bg-gradient-to-br from-white to-o-50 p-6 shadow-[var(--shadow-soft)] lg:block"
+          >
+            <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(245,107,31,0.08)_1px,transparent_1px),linear-gradient(180deg,rgba(245,107,31,0.08)_1px,transparent_1px)] bg-[size:28px_28px]" />
+            <div className="relative flex h-full flex-col justify-between">
+              <span className="h-2 w-24 rounded-pill bg-o-500/70" />
+              <div className="space-y-3">
+                {[0, 1, 2].map((item) => (
+                  <span
+                    key={item}
+                    className="block h-12 rounded-md border border-o-100 bg-white/86 shadow-[0_14px_30px_rgba(122,62,12,0.08)]"
+                  />
+                ))}
+              </div>
+              <span className="ml-auto h-14 w-14 rounded-full border-[10px] border-o-500/80" />
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+/* ==========================================================================
    Page hero
    ========================================================================== */
 

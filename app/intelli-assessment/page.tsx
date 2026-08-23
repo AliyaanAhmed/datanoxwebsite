@@ -7,7 +7,6 @@ import {
   Band,
   Card,
   Container,
-  Eyebrow,
   SectionHead,
   TextLink,
 } from "@/components/ui/primitives";
@@ -16,6 +15,7 @@ import {
   ClosingCta,
   FaqSection,
   PageHero,
+  ProductInsightPanel,
   ProofStrip,
   RelatedPages,
   UseCases,
@@ -234,39 +234,56 @@ export default function IntelliAssessmentPage() {
       <Band tone="warmer" block="why">
         <Container>
           <div className="py-band">
-            <Reveal>
-              <Eyebrow>Why it exists</Eyebrow>
-            </Reveal>
-            <Reveal delay={90} className="mt-6">
-              <h2 className="measure-tight text-d2">
-                Dynamics 365 cannot do rule based assessment. This is the layer
-                that adds it.
-              </h2>
-            </Reveal>
-            <Reveal delay={180} className="mt-7 measure">
-              <p className="text-[1.0625rem] leading-relaxed text-body">
-                Dynamics 365 manages data and workflow extremely well and has no
-                native support for policy driven evaluation. Organisations that
-                need it either commission heavy customisation, or accept that the
-                real decision making happens in a spreadsheet sitting beside the
-                system of record. We built this after watching that same gap
-                appear across government, education and enterprise clients, and
-                it extends the platform rather than competing with it.
-              </p>
-            </Reveal>
-            <Reveal delay={260} className="mt-8 flex flex-wrap gap-3">
-              {[
-                "Automated rule execution",
-                "Policy document interpretation",
-                "Consistent logic across workflows",
-              ].map((item) => (
-                <span
-                  key={item}
-                  className="rounded-pill bg-surface px-4 py-2 text-[0.875rem] font-medium text-ink-2 ring-1 ring-o-200"
-                >
-                  {item}
-                </span>
-              ))}
+            <Reveal from="scale">
+              <ProductInsightPanel
+                eyebrow="Why it exists"
+                title={
+                  <>
+                    Dynamics 365 cannot do rule based assessment. This is the
+                    layer that adds it.
+                  </>
+                }
+                icon="rules"
+                side={
+                  <div className="rounded-lg border border-o-100 bg-gradient-to-br from-white to-o-50 p-5 shadow-[var(--shadow-soft)]">
+                    <div className="mb-5 flex items-center gap-3">
+                      <span
+                        aria-hidden="true"
+                        className="h-10 w-10 rounded-md bg-o-100 ring-1 ring-o-200"
+                      />
+                      <span
+                        aria-hidden="true"
+                        className="h-2 flex-1 rounded-pill bg-o-200/80"
+                      />
+                    </div>
+                    <div className="flex flex-wrap gap-3">
+                      {[
+                        "Automated rule execution",
+                        "Policy document interpretation",
+                        "Consistent logic across workflows",
+                      ].map((item) => (
+                        <span
+                          key={item}
+                          className="rounded-pill bg-surface px-4 py-2 text-[0.875rem] font-medium text-ink-2 shadow-[0_10px_24px_rgba(122,62,12,0.08)] ring-1 ring-o-200"
+                        >
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                }
+              >
+                <p>
+                  Dynamics 365 manages data and workflow extremely well and has
+                  no native support for policy driven evaluation. Organisations
+                  that need it either commission heavy customisation, or accept
+                  that the real decision making happens in a spreadsheet sitting
+                  beside the system of record. We built this after watching that
+                  same gap appear across government, education and enterprise
+                  clients, and it extends the platform rather than competing
+                  with it.
+                </p>
+              </ProductInsightPanel>
             </Reveal>
           </div>
         </Container>

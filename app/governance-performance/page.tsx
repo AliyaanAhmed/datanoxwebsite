@@ -8,7 +8,6 @@ import {
   ArrowRight,
   Band,
   Container,
-  Eyebrow,
   SectionHead,
   TextLink,
 } from "@/components/ui/primitives";
@@ -17,6 +16,7 @@ import {
   ClosingCta,
   FaqSection,
   PageHero,
+  ProductInsightPanel,
   ProofStrip,
   RelatedPages,
   UseCases,
@@ -367,48 +367,52 @@ export default function GovernancePage() {
       <Band tone="warmer" block="layer">
         <Container>
           <div className="py-band">
-            <Reveal>
-              <Eyebrow>Where it sits</Eyebrow>
-            </Reveal>
-            <Reveal delay={90} className="mt-6">
-              <h2 className="measure-tight text-d2">
-                It sits on top of your ERP, not beside it.
-              </h2>
-            </Reveal>
-            <Reveal delay={180} className="mt-8 grid gap-x-14 gap-y-8 sm:grid-cols-2">
-              <div className="rounded-xl bg-surface p-7 shadow-[var(--shadow-soft)] ring-1 ring-o-200">
-                <p className="font-mono text-[0.625rem] uppercase tracking-[0.14em] text-o-700">
-                  This platform
+            <Reveal from="scale">
+              <ProductInsightPanel
+                eyebrow="Where it sits"
+                title="It sits on top of your ERP, not beside it."
+                icon="layers"
+                side={
+                  <div className="space-y-4">
+                    <div className="rounded-lg bg-surface p-6 shadow-[var(--shadow-soft)] ring-1 ring-o-200">
+                      <p className="font-mono text-[0.75rem] tracking-[0.02em] text-o-700">
+                        This Platform
+                      </p>
+                      <p className="mt-3 font-display text-[1.25rem] font-semibold text-ink">
+                        Governs the decision
+                      </p>
+                      <p className="mt-2 text-[0.9375rem] leading-relaxed text-body">
+                        Budget, plan, delivery, KPI. The layer most
+                        organisations have nothing at all in.
+                      </p>
+                    </div>
+                    <div className="relative rounded-lg border border-dashed border-rule-strong bg-white/52 p-6">
+                      <span
+                        aria-hidden="true"
+                        className="absolute left-6 top-[-0.55rem] h-4 w-px bg-o-300"
+                      />
+                      <p className="font-mono text-[0.75rem] tracking-[0.02em] text-muted">
+                        Your ERP
+                      </p>
+                      <p className="mt-3 font-display text-[1.25rem] font-semibold text-ink-2">
+                        Governs the transaction
+                      </p>
+                      <p className="mt-2 text-[0.9375rem] leading-relaxed text-body">
+                        Invoices, ledgers, payments, records. Untouched, and
+                        still the system of record for all of it.
+                      </p>
+                    </div>
+                  </div>
+                }
+              >
+                <p>
+                  Enterprise resource planning systems excel at recording
+                  transactions and struggle to link those transactions to
+                  strategic outcomes. That missing layer is where accountability
+                  disappears, and it is the only place this platform operates.
+                  There is no need to replace a core system to install it.
                 </p>
-                <p className="mt-3 font-display text-[1.25rem] font-semibold text-ink">
-                  Governs the decision
-                </p>
-                <p className="mt-2 text-[0.9375rem] leading-relaxed text-body">
-                  Budget, plan, delivery, KPI. The layer most organisations have
-                  nothing at all in.
-                </p>
-              </div>
-              <div className="rounded-xl border border-dashed border-rule-strong p-7">
-                <p className="font-mono text-[0.625rem] uppercase tracking-[0.14em] text-muted">
-                  Your ERP
-                </p>
-                <p className="mt-3 font-display text-[1.25rem] font-semibold text-ink-2">
-                  Governs the transaction
-                </p>
-                <p className="mt-2 text-[0.9375rem] leading-relaxed text-body">
-                  Invoices, ledgers, payments, records. Untouched, and still the
-                  system of record for all of it.
-                </p>
-              </div>
-            </Reveal>
-            <Reveal delay={280} className="mt-8">
-              <p className="measure text-[1.0625rem] leading-relaxed text-body">
-                Enterprise resource planning systems excel at recording
-                transactions and struggle to link those transactions to
-                strategic outcomes. That missing layer is where accountability
-                disappears, and it is the only place this platform operates.
-                There is no need to replace a core system to install it.
-              </p>
+              </ProductInsightPanel>
             </Reveal>
           </div>
         </Container>
