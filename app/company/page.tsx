@@ -580,18 +580,24 @@ export default function CompanyPage() {
         ]}
       />
 
-      <Band tone="canvas" block="csr">
-        <Container>
-          <div className="pb-band">
-            <Reveal>
-              <p className="measure text-lead">
-                We believe business success comes with a responsibility to make a
-                positive impact. Through those partnerships we focus on essential
-                services, empowering vulnerable populations and improving quality
-                of life. Choosing Datanox means more than adopting a platform. It
-                means joining a movement to uplift communities, one step at a
-                time.
-              </p>
+      <Band tone="peach" block="csr">
+        <Container wide>
+          <div className="pb-band pt-0">
+            <Reveal from="scale">
+              <div
+                data-interactive-card=""
+                data-rich-card=""
+                className="mx-auto max-w-[64rem] rounded-xl bg-surface p-7 shadow-[var(--shadow-soft)] ring-1 ring-o-100 sm:p-9 lg:p-10"
+              >
+                <p className="text-lead">
+                  We believe business success comes with a responsibility to make a
+                  positive impact. Through those partnerships we focus on essential
+                  services, empowering vulnerable populations and improving quality
+                  of life. Choosing Datanox means more than adopting a platform. It
+                  means joining a movement to uplift communities, one step at a
+                  time.
+                </p>
+              </div>
             </Reveal>
           </div>
         </Container>
