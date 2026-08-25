@@ -4,7 +4,6 @@ import { Reveal } from "@/components/ui/reveal";
 import {
   Band,
   Container,
-  Eyebrow,
   SectionHead,
   TextLink,
 } from "@/components/ui/primitives";
@@ -13,10 +12,12 @@ import { PartnerLogos } from "@/components/page/logo-wall";
 import {
   ClosingCta,
   FaqSection,
+  InsightPanel,
   PageHero,
   RelatedPages,
   type Faq,
 } from "@/components/page/blocks";
+import { FigPartnersHero } from "@/components/figures/hero-visuals";
 import { href } from "@/lib/routes";
 import { pageMetadata } from "@/lib/seo";
 import { SITE_URL, site } from "@/content/site";
@@ -152,6 +153,7 @@ export default function PartnersPage() {
             region.replace(/^the /, ""),
           ),
         }}
+        figure={<FigPartnersHero />}
       />
 
       {/* ---------------------------------------------------------------
@@ -181,41 +183,43 @@ export default function PartnersPage() {
       <Band tone="canvas" block="model">
         <Container>
           <div className="py-band">
-            <Reveal>
-              <Eyebrow>How the model actually works</Eyebrow>
+            <Reveal from="scale">
+              <InsightPanel
+                eyebrow="How the model actually works"
+                title="Datanox does the delivery. Partners make it local."
+                icon="handshake"
+                side={
+                  <ol className="overflow-hidden rounded-lg border border-o-100 bg-surface shadow-[var(--shadow-soft)]">
+                    {MODEL.map((item) => (
+                      <li
+                        key={item.title}
+                        className="grid gap-4 border-b border-rule p-5 last:border-b-0 sm:grid-cols-[auto_1fr]"
+                      >
+                        <IconChip name={item.icon} size="sm" />
+                        <span>
+                          <span className="block font-display text-[1.0625rem] font-semibold text-ink">
+                            {item.title}
+                          </span>
+                          <span className="mt-2 block text-[0.9375rem] leading-relaxed text-body">
+                            {item.body}
+                          </span>
+                        </span>
+                      </li>
+                    ))}
+                  </ol>
+                }
+              >
+                <p>
+                  A single engineering practice builds the products and delivers
+                  the client projects, which is why an implementation gets
+                  people who have shipped production software rather than a team
+                  assembled for the engagement. What a partner brings is
+                  standing in a market that rewards it: procurement
+                  relationships, regulatory familiarity, and somebody in the
+                  room at the right hour of the day.
+                </p>
+              </InsightPanel>
             </Reveal>
-            <Reveal delay={90} className="mt-6">
-              <h2 className="measure-tight text-d2">
-                Datanox does the delivery. Partners make it local.
-              </h2>
-            </Reveal>
-            <Reveal delay={180} className="mt-7 measure">
-              <p className="text-[1.0625rem] leading-relaxed text-body">
-                A single engineering practice builds the products and delivers
-                the client projects, which is why an implementation gets people
-                who have shipped production software rather than a team
-                assembled for the engagement. What a partner brings is standing
-                in a market that rewards it: procurement relationships,
-                regulatory familiarity, and somebody in the room at the right
-                hour of the day.
-              </p>
-            </Reveal>
-
-            <div className="mt-12 grid gap-5 lg:grid-cols-3">
-              {MODEL.map((item, index) => (
-                <Reveal key={item.title} delay={220 + index * 80}>
-                  <div className="flex h-full flex-col rounded-xl bg-surface p-7 shadow-[var(--shadow-soft)] ring-1 ring-rule">
-                    <IconChip name={item.icon} size="sm" />
-                    <h3 className="mt-5 font-display text-[1.125rem] font-semibold text-ink">
-                      {item.title}
-                    </h3>
-                    <p className="mt-2.5 text-[0.9375rem] leading-relaxed text-body">
-                      {item.body}
-                    </p>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
 
             <Reveal delay={480} className="mt-9">
               <p className="text-[0.9375rem] text-muted">

@@ -3,21 +3,21 @@ import type { Metadata } from "next";
 import { Reveal } from "@/components/ui/reveal";
 import {
   Band,
-  Card,
   Container,
   Eyebrow,
-  Lead,
   SectionHead,
   TextLink,
 } from "@/components/ui/primitives";
 import { IconChip } from "@/components/ui/icons";
 import {
   ClosingCta,
+  InsightPanel,
   PageHero,
   ProofStrip,
   RelatedPages,
 } from "@/components/page/blocks";
 import { PartnerLogos } from "@/components/page/logo-wall";
+import { FigCompanyHero } from "@/components/figures/hero-visuals";
 import { href } from "@/lib/routes";
 import { pageMetadata } from "@/lib/seo";
 import { SITE_URL, site } from "@/content/site";
@@ -170,6 +170,7 @@ export default function CompanyPage() {
           label: "Working across",
           items: ["Australia", "United Arab Emirates", "Saudi Arabia", "United States"],
         }}
+        figure={<FigCompanyHero />}
       />
 
       {/* ---------------------------------------------------------------
@@ -179,7 +180,11 @@ export default function CompanyPage() {
         <Container wide>
           <div className="py-band">
             <Reveal>
-              <figure className="overflow-hidden rounded-xl shadow-[var(--shadow-lift)] ring-1 ring-o-100">
+              <figure
+                data-interactive-card=""
+                data-rich-card=""
+                className="overflow-hidden rounded-xl shadow-[var(--shadow-lift)] ring-1 ring-o-100"
+              >
                 <div className="aspect-[16/7]">
                   <Photo
                     slug={life[1].slug}
@@ -214,19 +219,45 @@ export default function CompanyPage() {
               />
             </Reveal>
 
-            <ul className="mt-12 grid gap-5 sm:grid-cols-3">
-              {values.map((value, index) => (
-                <Reveal as="li" key={value.name} delay={index * 90}>
-                  <Card className="h-full">
-                    <IconChip name={value.icon} size="sm" />
-                    <h3 className="mt-5 text-d4">{value.name}</h3>
-                    <p className="mt-3 text-[0.9375rem] leading-relaxed">
-                      {value.body}
-                    </p>
-                  </Card>
-                </Reveal>
-              ))}
-            </ul>
+            <div className="mt-12 grid gap-5 lg:grid-cols-[1.05fr_1fr]">
+              <Reveal from="scale">
+                <div
+                  data-interactive-card=""
+                  data-rich-card=""
+                  className="relative flex h-full flex-col overflow-hidden rounded-xl bg-gradient-to-br from-o-500 to-o-700 p-8 text-white shadow-[var(--shadow-glow)] lg:p-10"
+                >
+                  <IconChip
+                    name={values[0].icon}
+                    size="lg"
+                    className="bg-white/18 text-white ring-white/25"
+                    data-card-float=""
+                  />
+                  <h3 className="mt-7 text-d3 !text-white">{values[0].name}</h3>
+                  <p className="mt-4 text-[1rem] leading-relaxed text-white/84">
+                    {values[0].body}
+                  </p>
+                </div>
+              </Reveal>
+              <div className="grid gap-5">
+                {values.slice(1).map((value, index) => (
+                  <Reveal key={value.name} delay={100 + index * 90} from="scale">
+                    <div
+                      data-interactive-card=""
+                      data-rich-card=""
+                      className="grid gap-5 rounded-xl bg-surface p-6 shadow-[var(--shadow-soft)] ring-1 ring-rule sm:grid-cols-[auto_1fr] sm:items-start lg:p-7"
+                    >
+                      <IconChip name={value.icon} size="sm" data-card-float="" />
+                      <div>
+                        <h3 className="text-d4">{value.name}</h3>
+                        <p className="mt-2.5 text-[0.9375rem] leading-relaxed">
+                          {value.body}
+                        </p>
+                      </div>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
+            </div>
           </div>
         </Container>
       </Band>
@@ -238,7 +269,11 @@ export default function CompanyPage() {
         <Container wide>
           <div className="py-band">
             <Reveal>
-              <div className="relative overflow-hidden rounded-xl bg-surface shadow-[var(--shadow-lift)] ring-1 ring-o-100">
+              <div
+                data-interactive-card=""
+                data-rich-card=""
+                className="relative overflow-hidden rounded-xl bg-surface shadow-[var(--shadow-lift)] ring-1 ring-o-100"
+              >
                 <span
                   aria-hidden="true"
                   className="pointer-events-none absolute right-[-6rem] top-[-6rem] h-72 w-72 rounded-full bg-[radial-gradient(circle,var(--color-o-100)_0%,transparent_70%)]"
@@ -309,16 +344,34 @@ export default function CompanyPage() {
       <Band tone="canvas" block="vision">
         <Container>
           <div className="py-band">
-            <Reveal>
-              <Eyebrow>Our vision</Eyebrow>
-              <p className="mt-7 max-w-[26ch] font-display text-d2 text-ink">
-                Help organisations use data to make smarter decisions and create
-                real impact.
-              </p>
-              <Lead className="mt-6">
-                Driving innovation, and giving teams the ability to unlock
-                insight they can act on and grow sustainably from.
-              </Lead>
+            <Reveal from="scale">
+              <InsightPanel
+                eyebrow="Our vision"
+                title={
+                  <>
+                    Help organisations use data to make smarter decisions and
+                    create real impact.
+                  </>
+                }
+                icon="target"
+                side={
+                  <div className="grid gap-3 rounded-lg border border-o-100 bg-gradient-to-br from-white to-o-50 p-5 shadow-[var(--shadow-soft)]">
+                    {["Innovation", "Insight", "Sustainable growth"].map((item) => (
+                      <span
+                        key={item}
+                        className="rounded-md bg-surface px-4 py-3 font-display text-[1rem] font-semibold text-ink shadow-[0_10px_24px_rgba(122,62,12,0.08)] ring-1 ring-o-100"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                }
+              >
+                <p>
+                  Driving innovation, and giving teams the ability to unlock
+                  insight they can act on and grow sustainably from.
+                </p>
+              </InsightPanel>
             </Reveal>
           </div>
         </Container>
@@ -340,7 +393,11 @@ export default function CompanyPage() {
             <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
               {team.map((person, index) => (
                 <Reveal as="li" key={person.slug} delay={index * 70}>
-                  <div className="flex h-full flex-col overflow-hidden rounded-xl bg-surface shadow-[var(--shadow-soft)] ring-1 ring-rule">
+                  <div
+                    data-interactive-card=""
+                    data-rich-card=""
+                    className="flex h-full flex-col overflow-hidden rounded-xl bg-surface shadow-[var(--shadow-soft)] ring-1 ring-rule"
+                  >
                     <div className="relative flex h-56 items-end justify-center overflow-hidden bg-gradient-to-b from-o-50 to-peach">
                       <span
                         aria-hidden="true"
@@ -388,7 +445,11 @@ export default function CompanyPage() {
 
             <div className="mt-12 grid gap-4 lg:grid-cols-3">
               <Reveal className="lg:col-span-2 lg:row-span-2">
-                <figure className="h-full overflow-hidden rounded-xl ring-1 ring-rule">
+                <figure
+                  data-interactive-card=""
+                  data-rich-card=""
+                  className="h-full overflow-hidden rounded-xl ring-1 ring-rule"
+                >
                   <div className="aspect-[4/3] h-full">
                     <Photo
                       slug={life[0].slug}
@@ -403,7 +464,11 @@ export default function CompanyPage() {
 
               {[life[2], life[3]].map((photo, index) => (
                 <Reveal key={photo.slug} delay={100 + index * 80}>
-                  <figure className="overflow-hidden rounded-xl ring-1 ring-rule">
+                  <figure
+                    data-interactive-card=""
+                    data-rich-card=""
+                    className="overflow-hidden rounded-xl ring-1 ring-rule"
+                  >
                     <div className="aspect-[16/10]">
                       <Photo
                         slug={photo.slug}
@@ -420,7 +485,11 @@ export default function CompanyPage() {
               {/* A wide strip closes the grid, so the right hand column is
                   never left with an orphan tile. */}
               <Reveal delay={280} className="lg:col-span-3">
-                <figure className="overflow-hidden rounded-xl ring-1 ring-rule">
+                <figure
+                  data-interactive-card=""
+                  data-rich-card=""
+                  className="overflow-hidden rounded-xl ring-1 ring-rule"
+                >
                   <div className="aspect-[16/9] lg:aspect-[24/7]">
                     <Photo
                       slug={life[4].slug}
@@ -434,18 +503,28 @@ export default function CompanyPage() {
               </Reveal>
             </div>
 
-            <ul className="mt-12 grid gap-5 sm:grid-cols-3">
-              {careers.map((item, index) => (
-                <Reveal as="li" key={item.name} delay={index * 90}>
-                  <Card className="h-full">
-                    <h3 className="text-d4">{item.name}</h3>
+            <Reveal delay={320} className="mt-12" from="scale">
+              <ol
+                data-interactive-card=""
+                data-rich-card=""
+                className="grid overflow-hidden rounded-xl bg-surface shadow-[var(--shadow-soft)] ring-1 ring-rule lg:grid-cols-3"
+              >
+                {careers.map((item, index) => (
+                  <li
+                    key={item.name}
+                    className="border-b border-rule p-6 last:border-b-0 lg:border-b-0 lg:border-r lg:last:border-r-0 lg:p-7"
+                  >
+                    <span className="font-display text-[2rem] font-semibold leading-none text-o-200">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <h3 className="mt-5 text-d4">{item.name}</h3>
                     <p className="mt-3 text-[0.9375rem] leading-relaxed">
                       {item.body}
                     </p>
-                  </Card>
-                </Reveal>
-              ))}
-            </ul>
+                  </li>
+                ))}
+              </ol>
+            </Reveal>
           </div>
         </Container>
       </Band>

@@ -8,7 +8,9 @@ type Kind =
   | "education"
   | "financial"
   | "impact"
-  | "insurance";
+  | "insurance"
+  | "company"
+  | "partners";
 
 const labels: Record<Kind, string> = {
   services: "A Microsoft delivery practice connecting products, services and people",
@@ -19,6 +21,8 @@ const labels: Record<Kind, string> = {
   financial: "A regulated process with intake, rules, approval and audit record",
   impact: "A funder report built from service records and impact measures",
   insurance: "Insurers and brokers connected through governed platform handoffs",
+  company: "One Datanox practice across products, delivery and client teams",
+  partners: "One engineering practice supported by local partners in four markets",
 };
 
 function Shell({
@@ -305,6 +309,50 @@ export function FigInsuranceHero() {
       <Line d="M226 165h14M380 165h16M146 194c46 88 274 88 320 0" delay={500} />
       <text x="112" y="332" className="fill-[var(--color-body)] font-sans" fontSize="13">
         Product, quote, approval and policy move without the inbox
+      </text>
+    </Shell>
+  );
+}
+
+export function FigCompanyHero() {
+  const id = "hco";
+  return (
+    <Shell id={id} kind="company">
+      <text x="70" y="96" className="fill-[var(--color-o-700)] font-sans" fontSize="13" fontWeight="600">
+        Founded in 2024
+      </text>
+      <rect x="70" y="128" width="220" height="142" rx="24" fill="#fff" stroke="var(--color-o-200)" data-pop="" style={{ "--d": 120 } as React.CSSProperties} />
+      <text x="102" y="176" className="fill-[var(--color-ink)] font-display" fontSize="30" fontWeight="660">
+        20 Years
+      </text>
+      <text x="102" y="210" className="fill-[var(--color-body)] font-sans" fontSize="13">
+        Business applications experience
+      </text>
+      <Node id={id} x={348} y={116} title="Products" delay={260} />
+      <Node id={id} x={348} y={200} title="Services" active delay={360} />
+      <Node id={id} x={348} y={284} title="People" delay={460} />
+      <Line d="M290 199h58M498 145c34 46 34 140 0 186" delay={540} />
+      <rect x="110" y="330" width="360" height="12" rx="6" fill="var(--color-o-200)" />
+      <rect x="110" y="330" width="252" height="12" rx="6" fill={`url(#${id}-brand)`} data-scale="" style={{ transformOrigin: "110px 330px", "--d": 700 } as React.CSSProperties} />
+      <text x="110" y="374" className="fill-[var(--color-body)] font-sans" fontSize="13">
+        Fifty people, thirty five in delivery
+      </text>
+    </Shell>
+  );
+}
+
+export function FigPartnersHero() {
+  const id = "hpa";
+  return (
+    <Shell id={id} kind="partners">
+      <Node id={id} x={214} y={88} title="Datanox Practice" width={192} active delay={120} />
+      <Line d="M310 146v56M310 260v56M214 231H124M406 231h90" delay={280} />
+      <Node id={id} x={62} y={202} title="Australia" delay={380} />
+      <Node id={id} x={214} y={202} title="Gulf" width={192} delay={460} />
+      <Node id={id} x={434} y={202} title="United States" width={156} delay={540} />
+      <rect x="168" y="316" width="284" height="58" rx="18" fill="#fff" stroke="var(--color-o-200)" data-pop="" style={{ "--d": 640 } as React.CSSProperties} />
+      <text x="310" y="352" textAnchor="middle" className="fill-[var(--color-ink)] font-display" fontSize="21" fontWeight="660">
+        Local presence, one standard
       </text>
     </Shell>
   );
