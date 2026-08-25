@@ -262,6 +262,43 @@ export default function CompanyPage() {
         </Container>
       </Band>
 
+      {/* Vision */}
+      <Band tone="canvas" block="vision">
+        <Container>
+          <div className="py-band">
+            <Reveal from="scale">
+              <InsightPanel
+                eyebrow="Our vision"
+                title={
+                  <>
+                    Help organisations use data to make smarter decisions and
+                    create real impact.
+                  </>
+                }
+                icon="target"
+                side={
+                  <div className="grid gap-3 rounded-lg border border-o-100 bg-gradient-to-br from-white to-o-50 p-5 shadow-[var(--shadow-soft)]">
+                    {["Innovation", "Insight", "Sustainable growth"].map((item) => (
+                      <span
+                        key={item}
+                        className="rounded-md bg-surface px-4 py-3 font-display text-[1rem] font-semibold text-ink shadow-[0_10px_24px_rgba(122,62,12,0.08)] ring-1 ring-o-100"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                }
+              >
+                <p>
+                  Driving innovation, and giving teams the ability to unlock
+                  insight they can act on and grow sustainably from.
+                </p>
+              </InsightPanel>
+            </Reveal>
+          </div>
+        </Container>
+      </Band>
+
       {/* ---------------------------------------------------------------
           Founder message, with the founder actually in it.
           --------------------------------------------------------------- */}
@@ -335,43 +372,6 @@ export default function CompanyPage() {
                   </Reveal>
                 </div>
               </div>
-            </Reveal>
-          </div>
-        </Container>
-      </Band>
-
-      {/* Vision */}
-      <Band tone="canvas" block="vision">
-        <Container>
-          <div className="py-band">
-            <Reveal from="scale">
-              <InsightPanel
-                eyebrow="Our vision"
-                title={
-                  <>
-                    Help organisations use data to make smarter decisions and
-                    create real impact.
-                  </>
-                }
-                icon="target"
-                side={
-                  <div className="grid gap-3 rounded-lg border border-o-100 bg-gradient-to-br from-white to-o-50 p-5 shadow-[var(--shadow-soft)]">
-                    {["Innovation", "Insight", "Sustainable growth"].map((item) => (
-                      <span
-                        key={item}
-                        className="rounded-md bg-surface px-4 py-3 font-display text-[1rem] font-semibold text-ink shadow-[0_10px_24px_rgba(122,62,12,0.08)] ring-1 ring-o-100"
-                      >
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                }
-              >
-                <p>
-                  Driving innovation, and giving teams the ability to unlock
-                  insight they can act on and grow sustainably from.
-                </p>
-              </InsightPanel>
             </Reveal>
           </div>
         </Container>
