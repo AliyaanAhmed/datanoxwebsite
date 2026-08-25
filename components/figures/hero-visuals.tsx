@@ -318,23 +318,47 @@ export function FigCompanyHero() {
   const id = "hco";
   return (
     <Shell id={id} kind="company">
-      <text x="70" y="96" className="fill-[var(--color-o-700)] font-sans" fontSize="13" fontWeight="600">
-        Founded in 2024
+      <rect x="72" y="84" width="220" height="132" rx="24" fill="#fff" stroke="var(--color-o-200)" data-pop="" style={{ "--d": 120 } as React.CSSProperties} />
+      <text x="104" y="126" className="fill-[var(--color-o-700)] font-sans" fontSize="12" fontWeight="700">
+        Founded In 2024
       </text>
-      <rect x="70" y="128" width="220" height="142" rx="24" fill="#fff" stroke="var(--color-o-200)" data-pop="" style={{ "--d": 120 } as React.CSSProperties} />
-      <text x="102" y="176" className="fill-[var(--color-ink)] font-display" fontSize="30" fontWeight="660">
+      <text x="104" y="164" className="fill-[var(--color-ink)] font-display" fontSize="28" fontWeight="660">
         20 Years
       </text>
-      <text x="102" y="210" className="fill-[var(--color-body)] font-sans" fontSize="13">
+      <text x="104" y="190" className="fill-[var(--color-body)] font-sans" fontSize="12">
         Business applications experience
       </text>
-      <Node id={id} x={348} y={116} title="Products" delay={260} />
-      <Node id={id} x={348} y={200} title="Services" active delay={360} />
-      <Node id={id} x={348} y={284} title="People" delay={460} />
-      <Line d="M290 199h58M498 145c34 46 34 140 0 186" delay={540} />
-      <rect x="110" y="330" width="360" height="12" rx="6" fill="var(--color-o-200)" />
-      <rect x="110" y="330" width="252" height="12" rx="6" fill={`url(#${id}-brand)`} data-scale="" style={{ transformOrigin: "110px 330px", "--d": 700 } as React.CSSProperties} />
-      <text x="110" y="374" className="fill-[var(--color-body)] font-sans" fontSize="13">
+      <rect x="328" y="88" width="216" height="260" rx="26" fill="#fff" stroke="var(--color-o-200)" data-pop="" style={{ "--d": 240 } as React.CSSProperties} />
+      {[
+        { label: "Products", y: 126, active: false },
+        { label: "Platform Services", y: 196, active: true },
+        { label: "People", y: 266, active: false },
+      ].map((item, index) => (
+        <g key={item.label} data-pop="" style={{ "--d": 320 + index * 90 } as React.CSSProperties}>
+          <rect
+            x="358"
+            y={item.y - 24}
+            width="156"
+            height="48"
+            rx="14"
+            fill={item.active ? `url(#${id}-brand)` : "var(--color-o-50)"}
+            stroke={item.active ? "none" : "var(--color-o-200)"}
+          />
+          <text
+            x="436"
+            y={item.y + 5}
+            textAnchor="middle"
+            className={item.active ? "fill-white font-sans" : "fill-[var(--color-ink)] font-sans"}
+            fontSize={item.label.length > 10 ? "11" : "13"}
+            fontWeight="650"
+          >
+            {item.label}
+          </text>
+        </g>
+      ))}
+      <Line d="M292 150h36M436 348v34H134" delay={620} />
+      <rect x="104" y="370" width="284" height="42" rx="14" fill="var(--color-o-50)" stroke="var(--color-o-200)" data-pop="" style={{ "--d": 700 } as React.CSSProperties} />
+      <text x="246" y="396" textAnchor="middle" className="fill-[var(--color-body)] font-sans" fontSize="12.5" fontWeight="600">
         Fifty people, thirty five in delivery
       </text>
     </Shell>
@@ -345,13 +369,26 @@ export function FigPartnersHero() {
   const id = "hpa";
   return (
     <Shell id={id} kind="partners">
-      <Node id={id} x={214} y={88} title="Datanox Practice" width={192} active delay={120} />
-      <Line d="M310 146v56M310 260v56M214 231H124M406 231h90" delay={280} />
-      <Node id={id} x={62} y={202} title="Australia" delay={380} />
-      <Node id={id} x={214} y={202} title="Gulf" width={192} delay={460} />
-      <Node id={id} x={434} y={202} title="United States" width={156} delay={540} />
-      <rect x="168" y="316" width="284" height="58" rx="18" fill="#fff" stroke="var(--color-o-200)" data-pop="" style={{ "--d": 640 } as React.CSSProperties} />
-      <text x="310" y="352" textAnchor="middle" className="fill-[var(--color-ink)] font-display" fontSize="21" fontWeight="660">
+      <rect x="184" y="76" width="252" height="74" rx="22" fill={`url(#${id}-brand)`} data-pop="" style={{ "--d": 120 } as React.CSSProperties} />
+      <text x="310" y="119" textAnchor="middle" className="fill-white font-display" fontSize="24" fontWeight="660">
+        Datanox Practice
+      </text>
+      <Line d="M310 150v54" delay={260} />
+      <rect x="70" y="204" width="480" height="92" rx="24" fill="#fff" stroke="var(--color-o-200)" data-pop="" style={{ "--d": 340 } as React.CSSProperties} />
+      {[
+        { label: "Australia", x: 146 },
+        { label: "Gulf", x: 310 },
+        { label: "United States", x: 474 },
+      ].map((item, index) => (
+        <g key={item.label} data-pop="" style={{ "--d": 440 + index * 80 } as React.CSSProperties}>
+          <circle cx={item.x} cy="250" r="18" fill={index === 1 ? `url(#${id}-brand)` : "var(--color-o-100)"} />
+          <text x={item.x} y="284" textAnchor="middle" className="fill-[var(--color-ink)] font-sans" fontSize="12.5" fontWeight="650">
+            {item.label}
+          </text>
+        </g>
+      ))}
+      <rect x="146" y="344" width="328" height="58" rx="18" fill="var(--color-o-50)" stroke="var(--color-o-200)" data-pop="" style={{ "--d": 700 } as React.CSSProperties} />
+      <text x="310" y="379" textAnchor="middle" className="fill-[var(--color-ink)] font-display" fontSize="19" fontWeight="660">
         Local presence, one standard
       </text>
     </Shell>

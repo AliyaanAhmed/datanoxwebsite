@@ -130,40 +130,6 @@ export default function ResourcesPage() {
 
             <PaperLibrary papers={papers} />
 
-            <Reveal delay={200} className="mt-12">
-              <div className="flex flex-col gap-5 rounded-lg bg-o-50 p-7 ring-1 ring-o-100 sm:flex-row sm:items-center sm:justify-between lg:p-8">
-                <div className="measure">
-                  <h3 className="font-display text-[1.0625rem] font-semibold text-ink">
-                    Company overview
-                  </h3>
-                  <p className="mt-2 text-[0.9375rem] leading-relaxed text-body">
-                    Who Datanox is, what the practice does and where it works.
-                    A corporate introduction rather than a technical paper, so
-                    there is no form in front of it.
-                  </p>
-                </div>
-                <a
-                  href="/papers/datanox-platform-overview.pdf"
-                  download
-                  className="inline-flex w-fit shrink-0 items-center gap-2.5 rounded-pill bg-surface px-6 py-3 text-[0.9375rem] font-medium leading-none text-ink ring-1 ring-o-200 transition-colors hover:bg-white"
-                >
-                  Open it
-                  <svg
-                    viewBox="0 0 16 16"
-                    aria-hidden="true"
-                    className="h-3.5 w-3.5"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.75"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M8 2.5v9M4.5 8L8 11.5 11.5 8M2.5 13.5h11" />
-                  </svg>
-                </a>
-              </div>
-            </Reveal>
-
             <Reveal delay={280} className="mt-8">
               <p className="measure text-[0.875rem] leading-relaxed text-muted">
                 Papers are updated when a product changes rather than on a

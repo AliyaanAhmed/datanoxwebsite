@@ -14,12 +14,12 @@ Every engagement draws on one engineering practice rather than a pool of contrac
 
 ## Services
 
-- [Services](https://datanox.io/services/): Dynamics 365 and Power Platform implementation, customisation, integration, AI and Copilot work, and on premises to cloud migration.
+- [Platform Services](https://datanox.io/services/): Dynamics 365 and Power Platform implementation, customisation, integration, AI and Copilot work, and on premises to cloud migration.
 - [Dynamics 365](https://datanox.io/services/dynamics-365/): Implementation and customisation across Sales, Customer Service, Customer Insights, Contact Center and Project Operations, including plugins, custom APIs and third party integration.
 - [Power Platform](https://datanox.io/services/power-platform/): Power Pages, model driven and canvas apps, code apps, Power Automate, Dataverse architecture, Power BI and application lifecycle governance.
 - [AI and Copilot](https://datanox.io/services/ai-and-copilot/): Copilot Studio agents grounded in Dataverse, Azure AI Foundry workloads, document understanding, and automation placed inside business process. AI advises and never decides.
 - [Cloud Migration](https://datanox.io/services/cloud-migration/): On premise to cloud migration for Dynamics CRM, legacy line of business applications, SharePoint workflow estates and custom portals. Agents read the source environment and classify every item before a roadmap is priced.
-- [Staff Augmentation](https://datanox.io/staff-augmentation/): Senior Power Platform and Dynamics 365 consultants placed inside a client delivery team, drawn from the Datanox practice rather than recruited per requirement.
+- [People](https://datanox.io/staff-augmentation/): Senior Power Platform and Dynamics 365 consultants placed inside a client delivery team, drawn from the Datanox practice rather than recruited per requirement.
 
 ## Products
 

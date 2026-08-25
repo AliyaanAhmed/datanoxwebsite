@@ -420,8 +420,7 @@ export default function StaffAugmentationPage() {
       </Band>
 
       {/* ---------------------------------------------------------------
-          Roles, as a real table. Nothing else on the site is a table, which
-          is the point.
+          Roles, shown as an interactive pod builder surface.
           --------------------------------------------------------------- */}
       <Band tone="warm" block="roles">
         <Container wide>
@@ -434,69 +433,69 @@ export default function StaffAugmentationPage() {
               />
             </Reveal>
 
-            <Reveal
-              delay={120}
-              data-interactive-card=""
-              data-rich-card=""
-              className="relative mt-12 overflow-hidden rounded-xl bg-surface shadow-[var(--shadow-soft)] ring-1 ring-rule"
-            >
-              <span
-                aria-hidden="true"
-                className="pointer-events-none absolute right-[-8rem] top-[-8rem] h-72 w-72 rounded-full bg-[radial-gradient(circle,var(--color-o-100)_0%,transparent_70%)]"
-              />
-              <table className="w-full border-collapse text-left">
-                <caption className="sr-only">
-                  Roles Datanox places, with seniority and scope
-                </caption>
-                <thead>
-                  <tr className="border-b border-rule bg-warm-1">
-                    <th
-                      scope="col"
-                      className="px-6 py-4 font-mono text-[0.625rem] uppercase tracking-[0.14em] text-muted lg:px-8"
-                    >
-                      Role
-                    </th>
-                    <th
-                      scope="col"
-                      className="hidden px-6 py-4 font-mono text-[0.625rem] uppercase tracking-[0.14em] text-muted sm:table-cell lg:px-8"
-                    >
-                      Level
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-6 py-4 font-mono text-[0.625rem] uppercase tracking-[0.14em] text-muted lg:px-8"
-                    >
-                      Scope
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {ROLES.map((row, index) => (
-                    <tr
-                      key={row.role}
-                      className="border-b border-rule transition-colors duration-200 last:border-b-0 hover:bg-o-50/55"
-                    >
-                      <th
-                        scope="row"
-                        className="px-6 py-5 align-top font-display text-[0.9375rem] font-semibold text-ink lg:px-8"
+            <Reveal delay={120} from="scale" className="mt-12">
+              <div
+                data-interactive-card=""
+                data-rich-card=""
+                className="relative overflow-hidden rounded-xl bg-surface shadow-[var(--shadow-soft)] ring-1 ring-rule"
+              >
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute right-[-8rem] top-[-8rem] h-72 w-72 rounded-full bg-[radial-gradient(circle,var(--color-o-100)_0%,transparent_70%)]"
+                />
+                <div className="relative grid lg:grid-cols-[minmax(16rem,0.35fr)_minmax(0,1fr)]">
+                  <div className="bg-gradient-to-br from-o-500 to-o-700 p-7 text-white lg:p-9">
+                    <p className="text-[0.8125rem] font-semibold text-white/75">
+                      Pod Builder
+                    </p>
+                    <h3 className="mt-5 font-display text-[1.75rem] font-semibold leading-tight text-white">
+                      Choose one specialist, or assemble a delivery pod.
+                    </h3>
+                    <div className="mt-8 grid grid-cols-3 gap-3">
+                      {["Architect", "Build", "Assure"].map((item, index) => (
+                        <span
+                          key={item}
+                          className="grid aspect-square place-items-center rounded-full bg-white/14 p-3 text-center text-[0.75rem] font-semibold leading-tight text-white ring-1 ring-white/20"
+                          style={{ "--pulse-delay": `${index * 120}ms` } as CSSProperties}
+                          data-staff-pulse=""
+                        >
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                    <p className="mt-8 text-[0.9375rem] leading-relaxed text-white/82">
+                      Seniority and mix are set by your requirement rather than
+                      by whoever happens to be free.
+                    </p>
+                  </div>
+
+                  <ol className="relative divide-y divide-rule">
+                    {ROLES.map((row, index) => (
+                      <li
+                        key={row.role}
+                        className="grid gap-4 p-5 transition-colors duration-200 hover:bg-o-50/55 sm:grid-cols-[minmax(0,0.58fr)_minmax(0,1fr)] sm:p-6 lg:p-7"
                       >
-                        <span className="flex items-start gap-3">
-                          <span className="mt-1 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-o-50 text-[0.6875rem] font-semibold text-o-700 ring-1 ring-o-100">
+                        <div className="flex items-start gap-3">
+                          <span className="mt-1 grid h-7 w-7 shrink-0 place-items-center rounded-full bg-o-50 text-[0.75rem] font-semibold text-o-700 ring-1 ring-o-100">
                             {index + 1}
                           </span>
-                          {row.role}
-                        </span>
-                      </th>
-                      <td className="hidden whitespace-nowrap px-6 py-5 align-top text-[0.875rem] text-o-700 sm:table-cell lg:px-8">
-                        {row.level}
-                      </td>
-                      <td className="px-6 py-5 align-top text-[0.9375rem] leading-relaxed text-body lg:px-8">
-                        {row.scope}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+                          <span>
+                            <span className="block font-display text-[1.0625rem] font-semibold leading-snug text-ink">
+                              {row.role}
+                            </span>
+                            <span className="mt-2 inline-flex rounded-pill bg-o-50 px-3 py-1 text-[0.8125rem] font-semibold text-o-700 ring-1 ring-o-100">
+                              {row.level}
+                            </span>
+                          </span>
+                        </div>
+                        <p className="text-[0.9375rem] leading-relaxed text-body">
+                          {row.scope}
+                        </p>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              </div>
             </Reveal>
           </div>
         </Container>

@@ -96,7 +96,7 @@ export const routes: Record<RouteKey, RouteDef> = {
 
   services: {
     path: "/services/",
-    label: "Services",
+    label: "Platform Services",
     priority: 0.9,
     changeFrequency: "monthly",
   },
@@ -129,7 +129,7 @@ export const routes: Record<RouteKey, RouteDef> = {
 
   staffAug: {
     path: "/staff-augmentation/",
-    label: "Staff Augmentation",
+    label: "People",
     priority: 0.9,
     changeFrequency: "monthly",
   },
@@ -314,7 +314,7 @@ export const nav: NavGroup[] = [
     ],
   },
   {
-    label: "Services",
+    label: "Platform Services",
     key: "services",
     columns: 1,
     footer: {
@@ -346,7 +346,7 @@ export const nav: NavGroup[] = [
     ],
   },
   {
-    label: "Staff Augmentation",
+    label: "People",
     key: "staffAug",
     columns: 1,
     children: [],
