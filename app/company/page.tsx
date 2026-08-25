@@ -223,8 +223,7 @@ export default function CompanyPage() {
               <Reveal from="scale">
                 <div
                   data-interactive-card=""
-                  data-rich-card=""
-                  className="relative flex h-full flex-col overflow-hidden rounded-xl bg-gradient-to-br from-o-500 to-o-700 p-8 text-white shadow-[var(--shadow-glow)] lg:p-10"
+                  className="relative flex h-full flex-col overflow-hidden rounded-xl bg-gradient-to-br from-o-500 to-o-700 p-8 text-white shadow-[var(--shadow-glow)] ring-1 ring-o-300 lg:p-10"
                 >
                   <IconChip
                     name={values[0].icon}
