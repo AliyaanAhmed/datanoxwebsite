@@ -54,12 +54,14 @@ export function Segments({
       {segments.map((segment, index) => {
         const mirrored = index % 2 === 1;
         const hasFigure = Boolean(segment.figure);
-        const emphasizeFirst = segment.blocks.length > 3 && index % 3 === 0;
+        const variant = index % 3;
+        const [firstBlock, ...restBlocks] = segment.blocks;
 
         return (
         <Band
           key={segment.tag}
           tone={index % 2 === 0 ? "canvas" : "warm"}
+          block="segment"
           className="overflow-hidden"
         >
           <Container wide>
@@ -74,24 +76,20 @@ export function Segments({
                   mirrored ? "lg:order-2" : ""
                 }`}
               >
-                <div
-                  data-interactive-card=""
-                  data-rich-card=""
-                  className="relative overflow-hidden rounded-xl bg-surface p-6 shadow-[var(--shadow-soft)] ring-1 ring-rule lg:p-7"
-                >
+                <div className="relative">
                   <span
                     aria-hidden="true"
-                    className="pointer-events-none absolute right-[-3rem] top-[-3rem] h-32 w-32 rounded-full bg-[radial-gradient(circle,var(--color-o-100)_0%,transparent_72%)]"
+                    className="pointer-events-none absolute left-0 top-0 h-full w-px bg-gradient-to-b from-o-500 via-o-200 to-transparent"
                   />
-                  <span className="relative inline-flex w-fit items-center rounded-pill bg-o-50 px-3 py-1.5 text-[0.8125rem] font-medium tracking-[0.02em] text-o-700 ring-1 ring-o-100">
-                    {segment.tag}
-                  </span>
-                  <h3 data-card-float="" className="relative mt-5 max-w-[20ch] text-d3">
-                    {segment.title}
-                  </h3>
-                  <p className="relative mt-4 measure text-[1.0625rem] leading-relaxed">
-                    {segment.intro}
-                  </p>
+                  <div className="pl-6">
+                    <span className="inline-flex w-fit items-center rounded-pill bg-o-50 px-3 py-1.5 text-[0.8125rem] font-medium tracking-[0.02em] text-o-700 ring-1 ring-o-100">
+                      {segment.tag}
+                    </span>
+                    <h3 className="mt-5 max-w-[20ch] text-d3">{segment.title}</h3>
+                    <p className="mt-4 measure text-[1.0625rem] leading-relaxed">
+                      {segment.intro}
+                    </p>
+                  </div>
                 </div>
               </Reveal>
 
@@ -108,35 +106,98 @@ export function Segments({
                   </Reveal>
                 ) : null}
 
-                <ul className="grid gap-5 sm:grid-cols-2">
-                  {segment.blocks.map((block, blockIndex) => {
-                    const featured = emphasizeFirst && blockIndex === 0;
-
-                    return (
-                      <Reveal
-                        as="li"
-                        key={block.heading}
-                        delay={blockIndex * 80}
-                        className={`h-full ${featured ? "sm:col-span-2" : ""}`}
-                      >
-                        <div
-                          data-interactive-card=""
-                          data-rich-card=""
-                          className={`h-full rounded-lg bg-surface p-6 shadow-[var(--shadow-soft)] ring-1 ring-rule lg:p-7 ${
-                            featured ? "grid gap-5 sm:grid-cols-[0.55fr_1fr] sm:items-center" : ""
-                          }`}
+                {variant === 0 ? (
+                  <Reveal delay={160} from="scale">
+                    <ol
+                      data-interactive-card=""
+                      data-rich-card=""
+                      className="overflow-hidden rounded-xl bg-surface shadow-[var(--shadow-soft)] ring-1 ring-rule"
+                    >
+                      {segment.blocks.map((block, blockIndex) => (
+                        <li
+                          key={block.heading}
+                          className="grid gap-4 border-b border-rule p-6 last:border-b-0 sm:grid-cols-[4rem_1fr] lg:p-7"
                         >
-                          <h4 data-card-float="" className="text-d4">
-                            {block.heading}
-                          </h4>
-                          <p className="mt-3 text-[0.9375rem] leading-relaxed sm:mt-0">
-                            {block.body}
-                          </p>
-                        </div>
-                      </Reveal>
-                    );
-                  })}
-                </ul>
+                          <span className="font-display text-[2rem] font-semibold leading-none text-o-200">
+                            {String(blockIndex + 1).padStart(2, "0")}
+                          </span>
+                          <span>
+                            <span className="block text-d4">{block.heading}</span>
+                            <span className="mt-2 block text-[0.9375rem] leading-relaxed">
+                              {block.body}
+                            </span>
+                          </span>
+                        </li>
+                      ))}
+                    </ol>
+                  </Reveal>
+                ) : null}
+
+                {variant === 1 && firstBlock ? (
+                  <Reveal delay={160} from="scale">
+                    <div
+                      data-interactive-card=""
+                      data-rich-card=""
+                      className="grid gap-0 overflow-hidden rounded-xl bg-surface shadow-[var(--shadow-soft)] ring-1 ring-rule lg:grid-cols-[0.9fr_1.1fr]"
+                    >
+                      <div className="bg-gradient-to-br from-o-500 to-o-700 p-6 text-white lg:p-8">
+                        <p className="text-[0.8125rem] font-semibold text-white/75">
+                          {segment.tag}
+                        </p>
+                        <h4 className="mt-5 font-display text-[1.625rem] font-semibold leading-tight text-white">
+                          {firstBlock.heading}
+                        </h4>
+                        <p className="mt-4 text-[0.9375rem] leading-relaxed text-white/84">
+                          {firstBlock.body}
+                        </p>
+                      </div>
+                      <div className="divide-y divide-rule">
+                        {restBlocks.map((block, blockIndex) => (
+                          <div key={block.heading} className="p-6 lg:p-7">
+                            <p className="flex items-baseline gap-3 text-d4">
+                              <span className="text-[0.875rem] font-semibold text-o-500">
+                                {String(blockIndex + 2).padStart(2, "0")}
+                              </span>
+                              {block.heading}
+                            </p>
+                            <p className="mt-2 text-[0.9375rem] leading-relaxed">
+                              {block.body}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </Reveal>
+                ) : null}
+
+                {variant === 2 ? (
+                  <Reveal delay={160} from="scale">
+                    <div
+                      data-interactive-card=""
+                      data-rich-card=""
+                      className="relative overflow-hidden rounded-xl bg-surface p-6 shadow-[var(--shadow-soft)] ring-1 ring-rule lg:p-8"
+                    >
+                      <span
+                        aria-hidden="true"
+                        className="absolute bottom-0 left-8 top-8 w-px bg-gradient-to-b from-o-500 via-o-200 to-transparent"
+                      />
+                      <ul className="grid gap-7">
+                        {segment.blocks.map((block) => (
+                          <li key={block.heading} className="relative pl-10">
+                            <span
+                              aria-hidden="true"
+                              className="absolute left-[0.42rem] top-2 h-3 w-3 rounded-full bg-o-500 ring-4 ring-o-50"
+                            />
+                            <h4 className="text-d4">{block.heading}</h4>
+                            <p className="mt-2 text-[0.9375rem] leading-relaxed">
+                              {block.body}
+                            </p>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </Reveal>
+                ) : null}
 
                 {segment.proof ? (
                   <Reveal delay={160}>
