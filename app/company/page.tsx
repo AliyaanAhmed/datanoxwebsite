@@ -8,7 +8,7 @@ import {
   SectionHead,
   TextLink,
 } from "@/components/ui/primitives";
-import { IconChip } from "@/components/ui/icons";
+import { Icon, IconChip } from "@/components/ui/icons";
 import {
   ClosingCta,
   InsightPanel,
@@ -225,12 +225,13 @@ export default function CompanyPage() {
                   data-interactive-card=""
                   className="relative flex h-full flex-col overflow-hidden rounded-xl bg-gradient-to-br from-o-500 to-o-700 p-8 text-white shadow-[var(--shadow-glow)] ring-1 ring-o-300 lg:p-10"
                 >
-                  <IconChip
-                    name={values[0].icon}
-                    size="lg"
-                    className="bg-white/18 text-white ring-white/25"
+                  <span
+                    aria-hidden="true"
                     data-card-float=""
-                  />
+                    className="grid h-14 w-14 shrink-0 place-items-center rounded-lg bg-white/16 p-3.5 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.28),0_14px_34px_rgba(120,45,0,0.18)] ring-1 ring-white/35"
+                  >
+                    <Icon name={values[0].icon} className="h-full w-full" />
+                  </span>
                   <h3 className="mt-7 text-d3 !text-white">{values[0].name}</h3>
                   <p className="mt-4 text-[1rem] leading-relaxed text-white/84">
                     {values[0].body}
