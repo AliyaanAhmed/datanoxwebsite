@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { FigRequestRouting } from "@/components/figures/request-routing";
+import { FigEducationHero } from "@/components/figures/hero-visuals";
 import { Reveal } from "@/components/ui/reveal";
 import { Band, Container, SectionHead, TextLink } from "@/components/ui/primitives";
 import { ClientGrid } from "@/components/page/logo-wall";
@@ -154,6 +155,7 @@ export default function EducationPage() {
             "Melbourne Business School",
           ],
         }}
+        figure={<FigEducationHero />}
       />
 
       <ProofStrip

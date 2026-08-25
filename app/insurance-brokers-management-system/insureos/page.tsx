@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { FigTwoHalves } from "@/components/figures/two-halves";
+import { MarkInsureOs } from "@/components/figures/product-marks";
 import { Reveal } from "@/components/ui/reveal";
 import { Band, Container, SectionHead } from "@/components/ui/primitives";
 import {
@@ -146,6 +147,11 @@ export default function InsureOsPage() {
           label: "Built on",
           items: ["Dynamics 365", "Power Platform", "Dataverse"],
         }}
+        figure={
+          <div className="overflow-hidden rounded-xl ring-1 ring-o-100">
+            <MarkInsureOs />
+          </div>
+        }
       />
 
       <ProofStrip

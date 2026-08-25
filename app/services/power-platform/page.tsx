@@ -9,6 +9,7 @@ import {
   TextLink,
 } from "@/components/ui/primitives";
 import { IconChip, type IconName } from "@/components/ui/icons";
+import { FigPowerHero } from "@/components/figures/hero-visuals";
 import { Capabilities } from "@/components/page/capabilities";
 import {
   ClosingCta,
@@ -193,6 +194,7 @@ export default function PowerPlatformPage() {
           label: "Building on",
           items: ["Power Pages", "Dataverse", "Power Automate", "Power BI"],
         }}
+        figure={<FigPowerHero />}
       />
 
       {/* ---------------------------------------------------------------

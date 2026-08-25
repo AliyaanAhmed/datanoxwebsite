@@ -8,6 +8,7 @@ import {
   TextLink,
 } from "@/components/ui/primitives";
 import { IconChip, type IconName } from "@/components/ui/icons";
+import { FigDynamicsHero } from "@/components/figures/hero-visuals";
 import { ClientStrip } from "@/components/page/logo-wall";
 import {
   ClosingCta,
@@ -201,6 +202,7 @@ export default function DynamicsPage() {
           label: "Across",
           items: ["Sales", "Customer Service", "Customer Insights", "Project Operations"],
         }}
+        figure={<FigDynamicsHero />}
       />
 
       <ClientStrip tone="warm" />

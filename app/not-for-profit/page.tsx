@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 import { Segments, type Segment } from "@/components/page/segments";
 import { FigMaturityIndex } from "@/components/figures/maturity-index";
-import { MarkGovernance } from "@/components/figures/product-marks";
+import { FigImpactHero } from "@/components/figures/hero-visuals";
 import {
   ClosingCta,
   FaqSection,
@@ -212,16 +212,7 @@ export default function NotForProfitPage() {
           label: "Serving",
           items: ["Fundraising", "Professional associations", "NDIS", "Health"],
         }}
-        figure={
-          <div
-            data-fig=""
-            data-reveal=""
-            suppressHydrationWarning
-            className="overflow-hidden rounded-xl shadow-[var(--shadow-lift)] ring-1 ring-o-100"
-          >
-            <MarkGovernance />
-          </div>
-        }
+        figure={<FigImpactHero />}
       />
 
       <ProofStrip

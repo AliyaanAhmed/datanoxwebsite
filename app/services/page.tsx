@@ -11,6 +11,7 @@ import {
   TextLink,
 } from "@/components/ui/primitives";
 import { IconChip, type IconName } from "@/components/ui/icons";
+import { FigServicesHero } from "@/components/figures/hero-visuals";
 import {
   ClosingCta,
   FaqSection,
@@ -216,6 +217,7 @@ export default function ServicesPage() {
           label: "Covering",
           items: ["Dynamics 365", "Power Platform", "AI and Copilot", "Cloud migration"],
         }}
+        figure={<FigServicesHero />}
       />
 
       {/* ---------------------------------------------------------------

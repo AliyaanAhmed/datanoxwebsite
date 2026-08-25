@@ -10,6 +10,7 @@ import {
   TextLink,
 } from "@/components/ui/primitives";
 import { IconChip, type IconName } from "@/components/ui/icons";
+import { FigAiHero } from "@/components/figures/hero-visuals";
 import {
   ClosingCta,
   FaqSection,
@@ -188,6 +189,7 @@ export default function AiPage() {
           label: "Building with",
           items: ["Copilot Studio", "Azure AI Foundry", "Dataverse", "Power Automate"],
         }}
+        figure={<FigAiHero />}
       />
 
       {/* ---------------------------------------------------------------

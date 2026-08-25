@@ -10,6 +10,7 @@ import {
   TextLink,
 } from "@/components/ui/primitives";
 import { IconChip, type IconName } from "@/components/ui/icons";
+import { FigFinancialHero } from "@/components/figures/hero-visuals";
 import { Segments, type Segment } from "@/components/page/segments";
 import {
   ClosingCta,
@@ -260,6 +261,7 @@ export default function FinancialServicesPage() {
           label: "Working across",
           items: ["Banking", "Lending", "Insurance", "Advisory"],
         }}
+        figure={<FigFinancialHero />}
       />
 
       {/* ---------------------------------------------------------------

@@ -204,7 +204,7 @@ export function PageHero({
                 delay={540}
                 className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-rule pt-7"
               >
-                <span className="font-mono text-[0.8125rem] tracking-[0.02em] text-muted">
+                <span className="text-[0.8125rem] font-semibold tracking-[0.01em] text-muted">
                   {meta.label}
                 </span>
                 {meta.items.map((item) => (
@@ -216,7 +216,7 @@ export function PageHero({
             ) : null}
           </div>
           {figure ? (
-            <Reveal delay={200} from="right" className="hero-media lg:pt-14">
+            <Reveal delay={200} from="scale" className="hero-media lg:pt-14">
               {figure}
             </Reveal>
           ) : null}
@@ -270,7 +270,7 @@ export function UseCases({
                   </div>
 
                   <div className="border-t border-rule bg-warm-1 p-6 lg:border-l lg:border-t-0 lg:p-7">
-                    <p className="font-mono text-[0.75rem] tracking-[0.02em] text-muted">
+                    <p className="text-[0.75rem] font-semibold tracking-[0.01em] text-muted">
                       Today
                     </p>
                     <p className="mt-2.5 text-[0.9375rem] leading-relaxed">
@@ -279,7 +279,7 @@ export function UseCases({
                   </div>
 
                   <div className="border-t border-rule bg-surface p-6 lg:border-l lg:border-t-0 lg:p-7">
-                    <p className="font-mono text-[0.75rem] tracking-[0.02em] text-o-700">
+                    <p className="text-[0.75rem] font-semibold tracking-[0.01em] text-o-700">
                       With Datanox
                     </p>
                     <p className="mt-2.5 text-[0.9375rem] leading-relaxed text-ink-2">

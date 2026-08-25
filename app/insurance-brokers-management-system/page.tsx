@@ -5,6 +5,7 @@ import type { Route } from "next";
 import { FigTwoHalves } from "@/components/figures/two-halves";
 import { FigQuoteJourney } from "@/components/figures/quote-journey";
 import { FigDisconnect } from "@/components/figures/disconnect";
+import { FigInsuranceHero } from "@/components/figures/hero-visuals";
 import { Reveal } from "@/components/ui/reveal";
 import {
   ArrowRight,
@@ -207,6 +208,7 @@ export default function InsurancePage() {
           label: "Built on",
           items: ["Dynamics 365", "Power Platform", "Dataverse"],
         }}
+        figure={<FigInsuranceHero />}
       />
 
       {/* The market as it stands */}
