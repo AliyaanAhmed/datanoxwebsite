@@ -74,7 +74,7 @@ export function ClientLogos() {
       <div className="py-band">
         <Container wide>
           <Reveal className="flex flex-col items-center gap-3 text-center">
-            <p className="font-mono text-[0.6875rem] uppercase tracking-[0.16em] text-o-700">
+            <p className="font-mono text-[0.8125rem] tracking-[0.02em] text-o-700">
               Organisations we have delivered for
             </p>
             <h2 className="max-w-[24ch] text-d3">
@@ -120,7 +120,7 @@ export function ClientStrip({ tone = "warm" }: { tone?: "warm" | "canvas" | "war
       <div className="py-12">
         <Container wide>
           <Reveal className="mb-7 text-center">
-            <p className="font-mono text-[0.6875rem] uppercase tracking-[0.16em] text-o-700">
+            <p className="font-mono text-[0.8125rem] tracking-[0.02em] text-o-700">
               Delivered for
             </p>
           </Reveal>
@@ -173,7 +173,11 @@ export function ClientGrid({
     <div className={`grid grid-cols-2 gap-3 ${track}`}>
       {items.map((client, index) => (
         <Reveal key={client.slug} delay={Math.min(index, 7) * 55}>
-          <span className="flex h-[6.25rem] items-center justify-center rounded-lg bg-surface px-5 shadow-[var(--shadow-soft)] ring-1 ring-rule transition-shadow duration-300 hover:shadow-[var(--shadow-lift)]">
+          <span
+            data-interactive-card=""
+            data-rich-card=""
+            className="flex h-[6.25rem] items-center justify-center rounded-lg bg-surface px-5 shadow-[var(--shadow-soft)] ring-1 ring-rule transition-shadow duration-300 hover:shadow-[var(--shadow-lift)]"
+          >
             <LogoMark item={client} boxW={148} boxH={46} />
           </span>
         </Reveal>
@@ -206,9 +210,13 @@ export function PartnerLogos({
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
         {items.map((partner, index) => (
           <Reveal key={partner.slug} delay={index * 70}>
-            <div className="flex h-full flex-col items-center justify-center gap-4 rounded-lg bg-surface px-5 py-7 shadow-[var(--shadow-soft)] ring-1 ring-rule">
+            <div
+              data-interactive-card=""
+              data-rich-card=""
+              className="flex h-full flex-col items-center justify-center gap-4 rounded-lg bg-surface px-5 py-7 shadow-[var(--shadow-soft)] ring-1 ring-rule"
+            >
               <LogoMark item={partner} boxW={148} boxH={40} />
-              <p className="font-mono text-[0.5625rem] uppercase tracking-[0.14em] text-muted">
+              <p className="font-mono text-[0.75rem] tracking-[0.02em] text-muted">
                 {partner.region}
               </p>
             </div>
@@ -222,11 +230,15 @@ export function PartnerLogos({
     <div className="grid gap-5 sm:grid-cols-2">
       {items.map((partner, index) => (
         <Reveal key={partner.slug} delay={index * 80}>
-          <div className="flex h-full flex-col rounded-xl bg-surface p-7 shadow-[var(--shadow-soft)] ring-1 ring-rule lg:p-8">
+          <div
+            data-interactive-card=""
+            data-rich-card=""
+            className="flex h-full flex-col rounded-xl bg-surface p-7 shadow-[var(--shadow-soft)] ring-1 ring-rule lg:p-8"
+          >
             <span className="flex h-14 items-center">
               <LogoMark item={partner} boxW={190} boxH={48} />
             </span>
-            <p className="mt-6 border-t border-rule pt-5 font-mono text-[0.625rem] uppercase tracking-[0.14em] text-o-700">
+            <p className="mt-6 border-t border-rule pt-5 font-mono text-[0.8125rem] tracking-[0.02em] text-o-700">
               {partner.region}
             </p>
             <p className="mt-2.5 text-[0.9375rem] leading-relaxed text-body">

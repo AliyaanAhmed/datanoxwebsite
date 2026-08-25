@@ -5,7 +5,6 @@ import {
   Band,
   Card,
   Container,
-  Eyebrow,
   SectionHead,
   TextLink,
 } from "@/components/ui/primitives";
@@ -14,6 +13,7 @@ import { Segments, type Segment } from "@/components/page/segments";
 import {
   ClosingCta,
   FaqSection,
+  InsightPanel,
   PageHero,
   RelatedPages,
   type Faq,
@@ -270,29 +270,13 @@ export default function GovernmentPage() {
       <Band tone="warmer" block="tracechain">
         <Container wide>
           <div className="py-band">
-            <div className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:gap-16">
-              <Reveal>
-                <Eyebrow>Why this sector is different</Eyebrow>
-                <h2 className="mt-6 measure-tight text-d2">
-                  The record outlives everyone who made it.
-                </h2>
-                <p className="mt-6 text-[1.0625rem] leading-relaxed text-body">
-                  A commercial system is usually asked what the number is. A
-                  public one is asked how it was arrived at, by an auditor, a
-                  parliamentary committee, a journalist or an unsuccessful
-                  applicant, and often several years later. Systems designed for
-                  the first question fail the second, which is why so much public
-                  sector reporting still ends in a spreadsheet somebody keeps in
-                  order to be able to answer it.
-                </p>
-                <p className="mt-4 text-[0.9375rem] leading-relaxed text-muted">
-                  Every design decision on this page follows from that. The
-                  point is not the dashboard, it is what sits underneath it.
-                </p>
-              </Reveal>
-
-              <Reveal delay={140}>
-                <ul className="grid gap-3">
+            <Reveal from="scale">
+              <InsightPanel
+                eyebrow="Why this sector is different"
+                title="The record outlives everyone who made it."
+                icon="record"
+                side={
+                  <ul className="grid gap-3">
                   {[
                     {
                       q: "Which objective funded this?",
@@ -313,7 +297,7 @@ export default function GovernmentPage() {
                   ].map((item, index) => (
                     <li
                       key={item.q}
-                      className="rounded-lg bg-surface p-6 shadow-[var(--shadow-soft)] ring-1 ring-rule"
+                      className="rounded-lg bg-surface p-5 shadow-[0_10px_24px_rgba(122,62,12,0.08)] ring-1 ring-o-100"
                     >
                       <p className="font-display text-[1.0625rem] font-semibold text-ink">
                         <span className="mr-3 font-mono text-[0.75rem] font-normal text-o-600">
@@ -327,8 +311,23 @@ export default function GovernmentPage() {
                     </li>
                   ))}
                 </ul>
-              </Reveal>
-            </div>
+                }
+              >
+                <p>
+                  A commercial system is usually asked what the number is. A
+                  public one is asked how it was arrived at, by an auditor, a
+                  parliamentary committee, a journalist or an unsuccessful
+                  applicant, and often several years later. Systems designed for
+                  the first question fail the second, which is why so much public
+                  sector reporting still ends in a spreadsheet somebody keeps in
+                  order to be able to answer it.
+                </p>
+                <p className="mt-4 text-[0.9375rem] leading-relaxed text-muted">
+                  Every design decision on this page follows from that. The
+                  point is not the dashboard, it is what sits underneath it.
+                </p>
+              </InsightPanel>
+            </Reveal>
           </div>
         </Container>
       </Band>

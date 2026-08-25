@@ -79,7 +79,7 @@ function GridLayout({ items }: { items: Capability[] }) {
             <h3 data-card-float="" className="mt-5 text-d4">{item.name}</h3>
             <p className="mt-3 text-[0.9375rem] leading-relaxed">{item.body}</p>
             {item.detail ? (
-              <p className="mt-auto pt-6 font-mono text-[0.6875rem] uppercase tracking-[0.1em] text-o-700">
+              <p className="mt-auto pt-6 font-mono text-[0.8125rem] tracking-[0.02em] text-o-700">
                 {item.detail}
               </p>
             ) : null}
@@ -115,7 +115,7 @@ function ListLayout({ items }: { items: Capability[] }) {
               {item.body}
             </p>
             {item.detail ? (
-              <p className="shrink-0 font-mono text-[0.6875rem] uppercase tracking-[0.1em] text-o-700 lg:pt-3 lg:text-right">
+              <p className="shrink-0 font-mono text-[0.8125rem] tracking-[0.02em] text-o-700 lg:pt-3 lg:text-right">
                 {item.detail}
               </p>
             ) : null}
@@ -154,7 +154,7 @@ function FeatureLayout({ items }: { items: Capability[] }) {
             {lead.body}
           </p>
           {lead.detail ? (
-            <p className="relative mt-auto pt-7 font-mono text-[0.6875rem] uppercase tracking-[0.1em] text-white/70">
+            <p className="relative mt-auto pt-7 font-mono text-[0.8125rem] tracking-[0.02em] text-white/70">
               {lead.detail}
             </p>
           ) : null}
@@ -207,7 +207,7 @@ function LedgerLayout({ items }: { items: Capability[] }) {
               <h3 className="flex flex-wrap items-baseline gap-x-3 gap-y-1 font-display text-[1.125rem] font-semibold text-ink">
                 {item.name}
                 {item.detail ? (
-                  <span className="font-mono text-[0.625rem] font-normal uppercase tracking-[0.12em] text-o-700">
+                  <span className="font-mono text-[0.75rem] font-normal tracking-[0.02em] text-o-700">
                     {item.detail}
                   </span>
                 ) : null}

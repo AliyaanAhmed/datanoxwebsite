@@ -7,12 +7,17 @@ import {
   Band,
   Card,
   Container,
-  Eyebrow,
   SectionHead,
   TextLink,
 } from "@/components/ui/primitives";
 import { IconChip, type IconName } from "@/components/ui/icons";
-import { ClosingCta, FaqSection, PageHero, RelatedPages } from "@/components/page/blocks";
+import {
+  ClosingCta,
+  FaqSection,
+  InsightPanel,
+  PageHero,
+  RelatedPages,
+} from "@/components/page/blocks";
 import { href, type RouteKey } from "@/lib/routes";
 import { pageMetadata } from "@/lib/seo";
 import { breadcrumbs, faqPage, graph, service } from "@/lib/schema";
@@ -259,7 +264,7 @@ export default function ServicesPage() {
                     }`}
                   >
                     {model.current ? (
-                      <span className="mb-4 inline-flex rounded-pill bg-ink px-3 py-1 font-mono text-[0.625rem] uppercase tracking-[0.14em] text-o-100">
+                      <span className="mb-4 inline-flex rounded-pill bg-ink px-3 py-1 font-mono text-[0.75rem] tracking-[0.02em] text-o-100">
                         This page
                       </span>
                     ) : null}
@@ -362,32 +367,47 @@ export default function ServicesPage() {
       <Band tone="warmer" block="layer">
         <Container>
           <div className="py-band">
-            <Reveal>
-              <Eyebrow>Where this sits</Eyebrow>
-            </Reveal>
-            <Reveal delay={90} className="mt-6">
-              <h2 className="measure-tight text-d3">
-                An ERP governs the transaction. We build the layer that governs
-                the decision.
-              </h2>
-            </Reveal>
-            <Reveal delay={180} className="mt-6 max-w-[46rem]">
-              <p className="text-[1.0625rem] leading-relaxed text-body">
-                Enterprise resource planning systems are very good at recording
-                what happened: invoices, ledgers, payments, records. They are
-                poor at connecting those transactions to the decisions that
-                caused them, which is why the question a leader most wants
-                answered, whether the spending achieved anything, takes weeks.
-                None of our work replaces a core system. It sits above one, and
-                gives the organisation a governed line between the decision and
-                the result.
-              </p>
-            </Reveal>
-            <Reveal delay={260} className="mt-8">
-              <Action href={href("governance")} variant="ghost">
-                See that as a product
-                <ArrowRight />
-              </Action>
+            <Reveal from="scale">
+              <InsightPanel
+                eyebrow="Where this sits"
+                title={
+                  <>
+                    An ERP governs the transaction. We build the layer that
+                    governs the decision.
+                  </>
+                }
+                icon="layers"
+                titleClassName="text-d3"
+                side={
+                  <div className="rounded-lg border border-o-100 bg-gradient-to-br from-white to-o-50 p-5 shadow-[var(--shadow-soft)]">
+                    <div className="grid gap-3">
+                      {["Transaction", "Decision", "Result"].map((item) => (
+                        <span
+                          key={item}
+                          className="rounded-md bg-surface px-4 py-3 font-display text-[1rem] font-semibold text-ink shadow-[0_10px_24px_rgba(122,62,12,0.08)] ring-1 ring-o-100"
+                        >
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                    <Action href={href("governance")} variant="ghost" className="mt-6">
+                      See that as a product
+                      <ArrowRight />
+                    </Action>
+                  </div>
+                }
+              >
+                <p>
+                  Enterprise resource planning systems are very good at
+                  recording what happened: invoices, ledgers, payments, records.
+                  They are poor at connecting those transactions to the decisions
+                  that caused them, which is why the question a leader most
+                  wants answered, whether the spending achieved anything, takes
+                  weeks. None of our work replaces a core system. It sits above
+                  one, and gives the organisation a governed line between the
+                  decision and the result.
+                </p>
+              </InsightPanel>
             </Reveal>
           </div>
         </Container>

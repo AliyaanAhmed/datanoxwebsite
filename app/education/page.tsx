@@ -9,6 +9,7 @@ import { href } from "@/lib/routes";
 import {
   ClosingCta,
   FaqSection,
+  InsightPanel,
   PageHero,
   ProofStrip,
   RelatedPages,
@@ -210,27 +211,35 @@ export default function EducationPage() {
       <Band tone="canvas">
         <Container>
           <div className="py-band">
-            <Reveal>
-              <SectionHead
+            <Reveal from="scale">
+              <InsightPanel
                 eyebrow="Why a university in particular"
                 title="Many organisations, one name above the door"
-                lead="A university is a federation. Faculties, schools, research centres, a finance function and a records office all have their own systems, their own approvals and often their own view of who a student is. That is why the same request has to be re entered so often, and it is a problem a shared data layer is unusually well suited to."
-              />
-            </Reveal>
-
-            <Reveal delay={140} className="mt-12">
-              <div className="rounded-xl bg-surface p-7 shadow-[var(--shadow-soft)] ring-1 ring-rule lg:p-8">
-                <p className="font-mono text-[0.6875rem] uppercase tracking-[0.16em] text-o-700">
-                  Named in this sector
+                icon="database"
+                side={
+                  <div className="rounded-lg border border-o-100 bg-gradient-to-br from-white to-o-50 p-5 shadow-[var(--shadow-soft)]">
+                    <p className="font-mono text-[0.8125rem] tracking-[0.02em] text-o-700">
+                      Named in this sector
+                    </p>
+                    <div className="mt-6">
+                      <ClientGrid items={EDU_CLIENTS} maxColumns={2} />
+                    </div>
+                    <p className="mt-6 border-t border-rule pt-5 text-[0.875rem] leading-relaxed text-muted">
+                      The full list, across all five sectors we deliver in, is on the{" "}
+                      <TextLink href={href("clients")}>clients page</TextLink>.
+                    </p>
+                  </div>
+                }
+              >
+                <p>
+                  A university is a federation. Faculties, schools, research
+                  centres, a finance function and a records office all have
+                  their own systems, their own approvals and often their own view
+                  of who a student is. That is why the same request has to be re
+                  entered so often, and it is a problem a shared data layer is
+                  unusually well suited to.
                 </p>
-                <div className="mt-6">
-                  <ClientGrid items={EDU_CLIENTS} maxColumns={2} />
-                </div>
-                <p className="mt-6 border-t border-rule pt-5 text-[0.875rem] leading-relaxed text-muted">
-                  The full list, across all five sectors we deliver in, is on the{" "}
-                  <TextLink href={href("clients")}>clients page</TextLink>.
-                </p>
-              </div>
+              </InsightPanel>
             </Reveal>
           </div>
         </Container>

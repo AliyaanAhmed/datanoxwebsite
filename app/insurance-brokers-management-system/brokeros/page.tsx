@@ -187,7 +187,11 @@ export default function BrokerOsPage() {
                 lead="Two of these seven steps happen in BrokerOS, and the two marked handoffs are the moments that used to be an email and a wait."
               />
             </Reveal>
-            <div className="rounded-xl bg-surface p-6 shadow-[var(--shadow-soft)] ring-1 ring-rule sm:p-9">
+            <div
+              data-interactive-card=""
+              data-rich-card=""
+              className="rounded-xl bg-surface p-6 shadow-[var(--shadow-soft)] ring-1 ring-rule sm:p-9"
+            >
               <FigQuoteJourney />
             </div>
           </div>

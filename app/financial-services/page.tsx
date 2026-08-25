@@ -6,7 +6,6 @@ import {
   Band,
   Card,
   Container,
-  Eyebrow,
   SectionHead,
   TextLink,
 } from "@/components/ui/primitives";
@@ -15,6 +14,7 @@ import { Segments, type Segment } from "@/components/page/segments";
 import {
   ClosingCta,
   FaqSection,
+  InsightPanel,
   PageHero,
   RelatedPages,
   type Faq,
@@ -269,35 +269,14 @@ export default function FinancialServicesPage() {
       <Band tone="warmer" block="reach">
         <Container wide>
           <div className="py-band">
-            <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-center lg:gap-16">
-              <Reveal>
-                <Eyebrow>Where this is proven, and where it sells</Eyebrow>
-                <h2 className="mt-6 measure-tight text-d2">
-                  Built against Gulf regulation. Not limited by it.
-                </h2>
-                <p className="mt-6 text-[1.0625rem] leading-relaxed text-body">
-                  The insurance products came out of the United Arab Emirates,
-                  where regulatory change around direct premium collection made
-                  the connection between insurers and brokers an operational
-                  problem rather than an inconvenience. That is where the
-                  reference deployments are and it is the market we know best.
-                </p>
-                <p className="mt-4 text-[1.0625rem] leading-relaxed text-body">
-                  Nothing in the architecture is specific to that jurisdiction.
-                  The products run in any market with a Microsoft tenant, and
-                  the onboarding, lending and advisory work on this page is
-                  already delivered in Australia as well as the Gulf.
-                </p>
-                <div className="mt-8">
-                  <TextLink href={href("insurance")}>
-                    See the insurance platform in full
-                  </TextLink>
-                </div>
-              </Reveal>
-
-              <Reveal delay={140}>
-                <div className="rounded-xl bg-surface p-7 shadow-[var(--shadow-soft)] ring-1 ring-rule lg:p-8">
-                  <p className="font-mono text-[0.6875rem] uppercase tracking-[0.16em] text-o-700">
+            <Reveal from="scale">
+              <InsightPanel
+                eyebrow="Where this is proven, and where it sells"
+                title="Built against Gulf regulation. Not limited by it."
+                icon="globe"
+                side={
+                  <div className="rounded-lg border border-o-100 bg-gradient-to-br from-white to-o-50 p-5 shadow-[var(--shadow-soft)]">
+                  <p className="font-mono text-[0.8125rem] tracking-[0.02em] text-o-700">
                     Named in this sector
                   </p>
                   <div className="mt-6">
@@ -310,8 +289,28 @@ export default function FinancialServicesPage() {
                     confidentiality terms and are not shown.
                   </p>
                 </div>
-              </Reveal>
-            </div>
+                }
+              >
+                <p>
+                  The insurance products came out of the United Arab Emirates,
+                  where regulatory change around direct premium collection made
+                  the connection between insurers and brokers an operational
+                  problem rather than an inconvenience. That is where the
+                  reference deployments are and it is the market we know best.
+                </p>
+                <p className="mt-4">
+                  Nothing in the architecture is specific to that jurisdiction.
+                  The products run in any market with a Microsoft tenant, and
+                  the onboarding, lending and advisory work on this page is
+                  already delivered in Australia as well as the Gulf.
+                </p>
+                <div className="mt-8">
+                  <TextLink href={href("insurance")}>
+                    See the insurance platform in full
+                  </TextLink>
+                </div>
+              </InsightPanel>
+            </Reveal>
           </div>
         </Container>
       </Band>

@@ -201,18 +201,26 @@ export default function ClientsPage() {
                     items.length <= 4 ? "lg:items-center" : "lg:items-start"
                   }`}
                 >
-                  <Reveal>
-                    <Eyebrow>{note.region}</Eyebrow>
-                    <h2 className="mt-6 measure-tight text-d3">{sector}</h2>
-                    <p className="mt-5 text-[1.0625rem] font-medium leading-relaxed text-ink-2">
-                      {note.lead}
-                    </p>
-                    <p className="mt-4 text-[0.9375rem] leading-relaxed text-body">
-                      {note.work}
-                    </p>
-                    <p className="mt-6 font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-muted">
-                      {items.length} named {items.length === 1 ? "organisation" : "organisations"}
-                    </p>
+                  <Reveal from="scale">
+                    <div
+                      data-interactive-card=""
+                      data-rich-card=""
+                      className="rounded-xl bg-surface p-6 shadow-[var(--shadow-soft)] ring-1 ring-rule lg:p-7"
+                    >
+                      <Eyebrow>{note.region}</Eyebrow>
+                      <h2 data-card-float="" className="mt-6 measure-tight text-d3">
+                        {sector}
+                      </h2>
+                      <p className="mt-5 text-[1.0625rem] font-medium leading-relaxed text-ink-2">
+                        {note.lead}
+                      </p>
+                      <p className="mt-4 text-[0.9375rem] leading-relaxed text-body">
+                        {note.work}
+                      </p>
+                      <p className="mt-6 font-mono text-[0.8125rem] tracking-[0.02em] text-muted">
+                        {items.length} named {items.length === 1 ? "organisation" : "organisations"}
+                      </p>
+                    </div>
                   </Reveal>
 
                   <Reveal delay={120}>

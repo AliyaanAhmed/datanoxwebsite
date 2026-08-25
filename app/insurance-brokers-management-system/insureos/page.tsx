@@ -188,7 +188,11 @@ export default function InsureOsPage() {
               />
             </Reveal>
             <Reveal delay={140} className="mt-12">
-              <div className="rounded-xl bg-surface p-6 shadow-[var(--shadow-soft)] ring-1 ring-rule sm:p-10">
+              <div
+                data-interactive-card=""
+                data-rich-card=""
+                className="rounded-xl bg-surface p-6 shadow-[var(--shadow-soft)] ring-1 ring-rule sm:p-10"
+              >
                 <FigTwoHalves />
               </div>
             </Reveal>

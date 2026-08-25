@@ -60,10 +60,10 @@ export function Breadcrumbs({
 }
 
 /* ==========================================================================
-   Product insight panel
+   Insight panel
    ========================================================================== */
 
-export function ProductInsightPanel({
+export function InsightPanel({
   eyebrow,
   title,
   children,
@@ -129,6 +129,8 @@ export function ProductInsightPanel({
     </div>
   );
 }
+
+export const ProductInsightPanel = InsightPanel;
 
 /* ==========================================================================
    Page hero
@@ -202,7 +204,7 @@ export function PageHero({
                 delay={540}
                 className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-rule pt-7"
               >
-                <span className="font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-muted">
+                <span className="font-mono text-[0.8125rem] tracking-[0.02em] text-muted">
                   {meta.label}
                 </span>
                 {meta.items.map((item) => (
@@ -255,7 +257,11 @@ export function UseCases({
           <ul className="mt-12 flex flex-col gap-4">
             {items.map((item, index) => (
               <Reveal as="li" key={item.who} delay={index * 80}>
-                <div className="grid overflow-hidden rounded-xl shadow-[var(--shadow-soft)] ring-1 ring-rule lg:grid-cols-[minmax(0,13rem)_minmax(0,1fr)_minmax(0,1fr)]">
+                <div
+                  data-interactive-card=""
+                  data-rich-card=""
+                  className="grid overflow-hidden rounded-xl shadow-[var(--shadow-soft)] ring-1 ring-rule lg:grid-cols-[minmax(0,13rem)_minmax(0,1fr)_minmax(0,1fr)]"
+                >
                   <div className="flex items-center gap-3.5 bg-gradient-to-br from-o-50 to-o-100 p-6 lg:p-7">
                     {item.icon ? <IconChip name={item.icon} size="sm" /> : null}
                     <span className="font-display text-[1.0625rem] font-semibold leading-snug text-ink">
@@ -264,7 +270,7 @@ export function UseCases({
                   </div>
 
                   <div className="border-t border-rule bg-warm-1 p-6 lg:border-l lg:border-t-0 lg:p-7">
-                    <p className="font-mono text-[0.625rem] uppercase tracking-[0.12em] text-muted">
+                    <p className="font-mono text-[0.75rem] tracking-[0.02em] text-muted">
                       Today
                     </p>
                     <p className="mt-2.5 text-[0.9375rem] leading-relaxed">
@@ -273,7 +279,7 @@ export function UseCases({
                   </div>
 
                   <div className="border-t border-rule bg-surface p-6 lg:border-l lg:border-t-0 lg:p-7">
-                    <p className="font-mono text-[0.625rem] uppercase tracking-[0.12em] text-o-700">
+                    <p className="font-mono text-[0.75rem] tracking-[0.02em] text-o-700">
                       With Datanox
                     </p>
                     <p className="mt-2.5 text-[0.9375rem] leading-relaxed text-ink-2">

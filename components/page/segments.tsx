@@ -63,7 +63,7 @@ export function Segments({
               }`}
             >
               <Reveal className={segment.figure ? "lg:sticky lg:top-28 lg:self-start" : ""}>
-                <span className="inline-flex w-fit items-center rounded-pill bg-o-50 px-3 py-1.5 text-[0.6875rem] font-medium uppercase tracking-[0.1em] text-o-700 ring-1 ring-o-100">
+                <span className="inline-flex w-fit items-center rounded-pill bg-o-50 px-3 py-1.5 text-[0.8125rem] font-medium tracking-[0.02em] text-o-700 ring-1 ring-o-100">
                   {segment.tag}
                 </span>
                 <h3 className="mt-5 max-w-[20ch] text-d3">{segment.title}</h3>
@@ -75,7 +75,11 @@ export function Segments({
               <div className="flex flex-col gap-5">
                 {segment.figure ? (
                   <Reveal delay={120}>
-                    <div className="rounded-xl bg-surface p-5 shadow-[var(--shadow-soft)] ring-1 ring-rule sm:p-8">
+                    <div
+                      data-interactive-card=""
+                      data-rich-card=""
+                      className="rounded-xl bg-surface p-5 shadow-[var(--shadow-soft)] ring-1 ring-rule sm:p-8"
+                    >
                       {segment.figure}
                     </div>
                   </Reveal>
@@ -89,8 +93,14 @@ export function Segments({
                       delay={blockIndex * 80}
                       className="h-full"
                     >
-                      <div className="h-full rounded-lg bg-surface p-6 shadow-[var(--shadow-soft)] ring-1 ring-rule lg:p-7">
-                        <h4 className="text-d4">{block.heading}</h4>
+                      <div
+                        data-interactive-card=""
+                        data-rich-card=""
+                        className="h-full rounded-lg bg-surface p-6 shadow-[var(--shadow-soft)] ring-1 ring-rule lg:p-7"
+                      >
+                        <h4 data-card-float="" className="text-d4">
+                          {block.heading}
+                        </h4>
                         <p className="mt-3 text-[0.9375rem] leading-relaxed">
                           {block.body}
                         </p>
@@ -101,12 +111,16 @@ export function Segments({
 
                 {segment.proof ? (
                   <Reveal delay={160}>
-                    <div className="relative overflow-hidden rounded-lg bg-gradient-to-br from-o-50 to-peach p-6 ring-1 ring-o-200 lg:p-7">
+                    <div
+                      data-interactive-card=""
+                      data-rich-card=""
+                      className="relative overflow-hidden rounded-lg bg-gradient-to-br from-o-50 to-peach p-6 ring-1 ring-o-200 lg:p-7"
+                    >
                       <span
                         aria-hidden="true"
                         className="pointer-events-none absolute right-[-2.5rem] top-[-2.5rem] h-32 w-32 rounded-full bg-[radial-gradient(circle,var(--color-o-200)_0%,transparent_70%)] opacity-70"
                       />
-                      <p className="relative font-mono text-[0.6875rem] uppercase tracking-[0.12em] text-o-700">
+                      <p className="relative font-mono text-[0.8125rem] tracking-[0.02em] text-o-700">
                         {segment.proof.label}
                       </p>
                       <p className="relative mt-3 text-[0.9375rem] leading-relaxed text-ink-2">

@@ -6,7 +6,6 @@ import {
   Band,
   Card,
   Container,
-  Eyebrow,
   SectionHead,
   TextLink,
 } from "@/components/ui/primitives";
@@ -14,6 +13,7 @@ import { IconChip, type IconName } from "@/components/ui/icons";
 import {
   ClosingCta,
   FaqSection,
+  InsightPanel,
   PageHero,
   RelatedPages,
   type Faq,
@@ -198,32 +198,36 @@ export default function AiPage() {
         <Container wide>
           <div className="py-band">
             <div className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:gap-16">
-              <Reveal>
-                <Eyebrow>The rule</Eyebrow>
-                <h2 className="mt-6 measure-tight text-d2">
-                  It advises. A person decides.
-                </h2>
-                <p className="mt-6 text-[1.0625rem] leading-relaxed text-body">
-                  Simple, absolute, and applied to our own products as well as
-                  to client work. Nothing is approved, rejected or published by a
-                  model on its own. In government, banking, insurance and higher
-                  education this is not a limitation, it is the reason a project
-                  clears review.
-                </p>
-                <div className="mt-8 flex flex-wrap items-center gap-3">
-                  {[
-                    "AI drafts and flags",
-                    "A person approves",
-                    "Logged in the audit trail",
-                  ].map((step, index) => (
-                    <span key={step} className="flex items-center gap-3">
-                      <span className="rounded-pill bg-surface px-4 py-2 text-[0.8125rem] font-medium text-ink-2 ring-1 ring-o-200">
-                        {step}
-                      </span>
-                      {index < 2 ? <ArrowRight className="text-o-400" /> : null}
-                    </span>
-                  ))}
-                </div>
+              <Reveal from="scale">
+                <InsightPanel
+                  eyebrow="The rule"
+                  title="It advises. A person decides."
+                  icon="shield"
+                  side={
+                    <div className="flex flex-wrap items-center gap-3 rounded-lg border border-o-100 bg-gradient-to-br from-white to-o-50 p-5 shadow-[var(--shadow-soft)]">
+                      {[
+                        "AI drafts and flags",
+                        "A person approves",
+                        "Logged in the audit trail",
+                      ].map((step, index) => (
+                        <span key={step} className="flex items-center gap-3">
+                          <span className="rounded-pill bg-surface px-4 py-2 text-[0.8125rem] font-medium text-ink-2 shadow-[0_10px_24px_rgba(122,62,12,0.08)] ring-1 ring-o-200">
+                            {step}
+                          </span>
+                          {index < 2 ? <ArrowRight className="text-o-400" /> : null}
+                        </span>
+                      ))}
+                    </div>
+                  }
+                >
+                  <p>
+                    Simple, absolute, and applied to our own products as well as
+                    to client work. Nothing is approved, rejected or published by
+                    a model on its own. In government, banking, insurance and
+                    higher education this is not a limitation, it is the reason
+                    a project clears review.
+                  </p>
+                </InsightPanel>
               </Reveal>
 
               <Reveal delay={140}>

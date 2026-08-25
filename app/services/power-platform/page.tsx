@@ -5,7 +5,6 @@ import {
   Band,
   Card,
   Container,
-  Eyebrow,
   SectionHead,
   TextLink,
 } from "@/components/ui/primitives";
@@ -14,6 +13,7 @@ import { Capabilities } from "@/components/page/capabilities";
 import {
   ClosingCta,
   FaqSection,
+  InsightPanel,
   PageHero,
   RelatedPages,
   type Faq,
@@ -201,15 +201,30 @@ export default function PowerPlatformPage() {
       <Band tone="warmer" block="reference">
         <Container>
           <div className="py-band">
-            <Reveal>
-              <Eyebrow>Why that matters</Eyebrow>
-            </Reveal>
-            <Reveal delay={90} className="mt-6">
-              <h2 className="measure-tight text-d3">
-                Our own software is the reference implementation.
-              </h2>
-            </Reveal>
-            <Reveal delay={180} className="mt-6 measure">
+            <Reveal from="scale">
+              <InsightPanel
+                eyebrow="Why that matters"
+                title="Our own software is the reference implementation."
+                icon="layers"
+                titleClassName="text-d3"
+                side={
+                  <div className="rounded-lg border border-o-100 bg-gradient-to-br from-white to-o-50 p-5 shadow-[var(--shadow-soft)]">
+                    <div className="space-y-3">
+                      {["Products", "Platform", "Practice"].map((item) => (
+                        <span
+                          key={item}
+                          className="block rounded-md bg-surface px-4 py-3 font-display text-[1rem] font-semibold text-ink shadow-[0_10px_24px_rgba(122,62,12,0.08)] ring-1 ring-o-100"
+                        >
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                    <TextLink href={href("governance")} className="mt-6">
+                      See what we build on it
+                    </TextLink>
+                  </div>
+                }
+              >
               <p className="text-[1.0625rem] leading-relaxed text-body">
                 Most partners learn a platform by delivering other people’s
                 requirements on it. We also maintain products on it, which is a
@@ -219,11 +234,7 @@ export default function PowerPlatformPage() {
                 ceiling instead of discovering it in month four, and in a
                 willingness to say when the platform is the wrong answer.
               </p>
-            </Reveal>
-            <Reveal delay={260} className="mt-8">
-              <TextLink href={href("governance")}>
-                See what we build on it
-              </TextLink>
+              </InsightPanel>
             </Reveal>
           </div>
         </Container>

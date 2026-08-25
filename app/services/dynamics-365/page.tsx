@@ -4,7 +4,6 @@ import { Reveal } from "@/components/ui/reveal";
 import {
   Band,
   Container,
-  Eyebrow,
   SectionHead,
   TextLink,
 } from "@/components/ui/primitives";
@@ -13,6 +12,7 @@ import { ClientStrip } from "@/components/page/logo-wall";
 import {
   ClosingCta,
   FaqSection,
+  InsightPanel,
   PageHero,
   RelatedPages,
   type Faq,
@@ -259,42 +259,47 @@ export default function DynamicsPage() {
       <Band tone="canvas" block="integration">
         <Container>
           <div className="py-band">
-            <Reveal>
-              <Eyebrow>Integration</Eyebrow>
-            </Reveal>
-            <Reveal delay={90} className="mt-6">
-              <h2 className="measure-tight text-d3">
-                A customer engagement platform is only as good as what it can
-                reach.
-              </h2>
-            </Reveal>
-            <Reveal delay={180} className="mt-6 measure">
-              <p className="text-[1.0625rem] leading-relaxed text-body">
-                One of our automotive finance engagements connected Dynamics 365
-                to more than ten surrounding systems, from an integration bus to
-                electronic signature and identity, and moved years of lending
-                history off a legacy platform without losing a record. The
-                result was a process that runs start to finish inside the
-                platform, calling out to every system it needs and coming back
-                with an answer, with no person in the middle carrying data
-                between screens.
-              </p>
-            </Reveal>
-            <Reveal delay={260} className="mt-8 flex flex-wrap gap-3">
-              {[
-                "Integration bus and message queue",
-                "Electronic signature",
-                "Identity and access",
-                "Legacy platform migration",
-                "Custom APIs",
-              ].map((item) => (
-                <span
-                  key={item}
-                  className="rounded-pill bg-o-50 px-4 py-2 text-[0.875rem] font-medium text-o-800"
-                >
-                  {item}
-                </span>
-              ))}
+            <Reveal from="scale">
+              <InsightPanel
+                eyebrow="Integration"
+                title={
+                  <>
+                    A customer engagement platform is only as good as what it
+                    can reach.
+                  </>
+                }
+                icon="link"
+                titleClassName="text-d3"
+                side={
+                  <div className="flex flex-wrap gap-3 rounded-lg border border-o-100 bg-gradient-to-br from-white to-o-50 p-5 shadow-[var(--shadow-soft)]">
+                    {[
+                      "Integration bus and message queue",
+                      "Electronic signature",
+                      "Identity and access",
+                      "Legacy platform migration",
+                      "Custom APIs",
+                    ].map((item) => (
+                      <span
+                        key={item}
+                        className="rounded-pill bg-surface px-4 py-2 text-[0.875rem] font-medium text-o-800 shadow-[0_10px_24px_rgba(122,62,12,0.08)] ring-1 ring-o-100"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                }
+              >
+                <p>
+                  One of our automotive finance engagements connected Dynamics
+                  365 to more than ten surrounding systems, from an integration
+                  bus to electronic signature and identity, and moved years of
+                  lending history off a legacy platform without losing a record.
+                  The result was a process that runs start to finish inside the
+                  platform, calling out to every system it needs and coming back
+                  with an answer, with no person in the middle carrying data
+                  between screens.
+                </p>
+              </InsightPanel>
             </Reveal>
           </div>
         </Container>

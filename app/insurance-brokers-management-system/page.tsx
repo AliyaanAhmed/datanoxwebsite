@@ -16,6 +16,7 @@ import {
 import {
   ClosingCta,
   FaqSection,
+  InsightPanel,
   PageHero,
   RelatedPages,
   type Faq,
@@ -271,7 +272,7 @@ export default function InsurancePage() {
               {sides.map((side, index) => (
                 <Reveal as="li" key={side.key} delay={index * 110}>
                   <Card className="flex h-full flex-col">
-                    <span className="inline-flex w-fit items-center rounded-pill bg-o-50 px-3 py-1.5 text-[0.6875rem] font-medium uppercase tracking-[0.1em] text-o-700">
+                    <span className="inline-flex w-fit items-center rounded-pill bg-o-50 px-3 py-1.5 text-[0.8125rem] font-medium tracking-[0.02em] text-o-700">
                       {side.tag}
                     </span>
                     <h3 className="mt-5 text-d3">{side.name}</h3>
@@ -297,7 +298,7 @@ export default function InsurancePage() {
                       ))}
                     </ul>
 
-                    <p className="mt-6 font-mono text-[0.6875rem] uppercase tracking-[0.1em] text-muted">
+                    <p className="mt-6 font-mono text-[0.8125rem] tracking-[0.02em] text-muted">
                       What it wins you
                     </p>
                     <ul className="mt-3 flex flex-col gap-2">
@@ -345,14 +346,30 @@ export default function InsurancePage() {
       <Band tone="canvas">
         <Container wide>
           <div className="py-band">
-            <Reveal>
-              <SectionHead
+            <Reveal from="scale">
+              <InsightPanel
                 eyebrow="A win on both sides"
-                align="center"
                 title="The market gets faster, cleaner and fully traceable"
-                lead="Without anyone replacing the core systems they already depend on. Every manual handoff removed is one less place a file can go missing and one less thing to reconstruct at audit."
-                className="mx-auto max-w-[44rem]"
-              />
+                icon="handshake"
+                side={
+                  <div className="grid gap-3 rounded-lg border border-o-100 bg-gradient-to-br from-white to-o-50 p-5 shadow-[var(--shadow-soft)]">
+                    {["Insurer", "Broker", "Audit trail"].map((item) => (
+                      <span
+                        key={item}
+                        className="rounded-md bg-surface px-4 py-3 font-display text-[1rem] font-semibold text-ink shadow-[0_10px_24px_rgba(122,62,12,0.08)] ring-1 ring-o-100"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                }
+              >
+                <p>
+                  Without anyone replacing the core systems they already depend
+                  on. Every manual handoff removed is one less place a file can
+                  go missing and one less thing to reconstruct at audit.
+                </p>
+              </InsightPanel>
             </Reveal>
           </div>
         </Container>

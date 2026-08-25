@@ -15,6 +15,7 @@ import { Capabilities } from "@/components/page/capabilities";
 import {
   ClosingCta,
   FaqSection,
+  InsightPanel,
   PageHero,
   RelatedPages,
   type Faq,
@@ -230,31 +231,48 @@ export default function CloudMigrationPage() {
       <Band tone="warmer" block="nda">
         <Container>
           <div className="py-band">
-            <Reveal>
-              <Eyebrow>A note on references</Eyebrow>
-            </Reveal>
-            <Reveal delay={90} className="mt-6">
-              <h2 className="measure-tight text-d3">
-                We cannot name the organisations, and we will not pretend
-                otherwise.
-              </h2>
-            </Reveal>
-            <Reveal delay={180} className="mt-6 measure">
-              <p className="text-[1.0625rem] leading-relaxed text-body">
-                The migration work sits in the Australian market and every one
-                of those engagements carries confidentiality terms that do not
-                permit us to publish the client. A supplier who quietly stretches
-                a permission for a website is a supplier who will do the same
-                with your data, so this page argues from method rather than from
-                a logo wall. In a conversation we can describe comparable estates
-                and what they turned up in detail, which is more useful than a
-                name in any case.
-              </p>
-            </Reveal>
-            <Reveal delay={260} className="mt-8">
-              <TextLink href={href("clients")}>
-                See the organisations we can name
-              </TextLink>
+            <Reveal from="scale">
+              <InsightPanel
+                eyebrow="A note on references"
+                title={
+                  <>
+                    We cannot name the organisations, and we will not pretend
+                    otherwise.
+                  </>
+                }
+                icon="shield"
+                titleClassName="text-d3"
+                side={
+                  <div className="rounded-lg border border-o-100 bg-gradient-to-br from-white to-o-50 p-5 shadow-[var(--shadow-soft)]">
+                    <div className="grid gap-3">
+                      {["Confidentiality terms", "Comparable estates", "Method before logo wall"].map(
+                        (item) => (
+                          <span
+                            key={item}
+                            className="rounded-md bg-surface px-4 py-3 font-display text-[1rem] font-semibold text-ink shadow-[0_10px_24px_rgba(122,62,12,0.08)] ring-1 ring-o-100"
+                          >
+                            {item}
+                          </span>
+                        ),
+                      )}
+                    </div>
+                    <TextLink href={href("clients")} className="mt-6">
+                      See the organisations we can name
+                    </TextLink>
+                  </div>
+                }
+              >
+                <p>
+                  The migration work sits in the Australian market and every one
+                  of those engagements carries confidentiality terms that do not
+                  permit us to publish the client. A supplier who quietly
+                  stretches a permission for a website is a supplier who will do
+                  the same with your data, so this page argues from method
+                  rather than from a logo wall. In a conversation we can
+                  describe comparable estates and what they turned up in detail,
+                  which is more useful than a name in any case.
+                </p>
+              </InsightPanel>
             </Reveal>
           </div>
         </Container>
